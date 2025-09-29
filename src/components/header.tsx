@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import Link from "next/link";
@@ -73,9 +72,9 @@ export function Header({insights}: {insights: Insight[]}) {
     )}
     <header className="sticky top-0 z-50 w-full border-b bg-white">
       <div className="container flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 font-bold">
+        <Link href="/" className="flex items-center gap-1 font-bold">
           <Logo className="h-20 w-auto" />
-          <span className="hidden sm:inline">Credence Africa</span>
+          <span>Credence Africa</span>
         </Link>
         <div className="hidden lg:flex flex-grow items-center justify-center">
           <NavigationMenu>

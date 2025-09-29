@@ -44,7 +44,7 @@ export function Header() {
                       className={cn(
                         navigationMenuTriggerStyle(),
                         "hover:underline hover:decoration-primary hover:underline-offset-4 hover:decoration-2",
-                        "data-[active]:underline data-[active]:decoration-primary data-[active]:underline-offset-4 data-[active]:decoration-2"
+                        "data-[active]:underline data-[active]:decoration-primary data-[active]:underline-offset-4 data-[active]:decoration-2 bg-white hover:bg-white"
                       )}
                       active={pathname === link.href}
                     >

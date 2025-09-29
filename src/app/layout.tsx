@@ -9,6 +9,9 @@ const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 export const metadata: Metadata = {
   title: "Credence Africa",
   description: "Strategic Advisory for Africa’s Next Growth Frontier",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({

@@ -29,7 +29,7 @@ export default function CooperativesPage() {
   return (
     <div className="flex-1">
       <section className="py-16 md:py-24 bg-secondary">
-        <div className="container mx-auto text-center">
+        <div className="container text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Cooperatives
           </h1>
@@ -42,7 +42,7 @@ export default function CooperativesPage() {
       </section>
 
       <section className="py-16 md:py-24">
-        <div className="container mx-auto">
+        <div className="container">
           <div className="grid md:grid-cols-2 gap-16 items-start">
             <div>
               <h2 className="text-3xl font-bold mb-6">Core Objectives</h2>
@@ -81,7 +81,7 @@ export default function CooperativesPage() {
       </section>
 
        <section className="py-16 md:py-24 bg-secondary">
-        <div className="container mx-auto text-center">
+        <div className="container text-center">
           <h2 className="text-3xl font-bold mb-4">
             Contact Coops Africa
           </h2>

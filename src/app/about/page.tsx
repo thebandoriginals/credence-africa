@@ -19,7 +19,7 @@ export default function AboutPage() {
   return (
     <div className="flex-1">
       <section id="who-we-are" className="py-16 md:py-24 bg-secondary">
-        <div className="container mx-auto">
+        <div className="container">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">Who We Are</h1>
@@ -48,7 +48,7 @@ export default function AboutPage() {
       </section>
 
       <section id="our-approach" className="py-16 md:py-24">
-        <div className="container mx-auto text-center">
+        <div className="container text-center">
           <h2 className="text-3xl font-bold mb-4">Our Approach</h2>
           <p className="max-w-3xl mx-auto text-muted-foreground mb-12">
             We blend local insight with global standards, focusing on
@@ -81,7 +81,7 @@ export default function AboutPage() {
       </section>
 
       <section id="our-team" className="py-16 md:py-24 bg-secondary">
-          <div className="container mx-auto text-center">
+          <div className="container text-center">
               <h2 className="text-3xl font-bold mb-12">Meet Our Team</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   {team.map((member) => {
@@ -102,7 +102,7 @@ export default function AboutPage() {
       </section>
 
       <section id="our-partners" className="py-16 md:py-24">
-          <div className="container mx-auto text-center">
+          <div className="container text-center">
               <h2 className="text-3xl font-bold mb-4">Our Partners</h2>
               <p className="max-w-3xl mx-auto text-muted-foreground mb-12">We advise clients who shape sectors, scale ventures, and steer reform:</p>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
@@ -117,7 +117,7 @@ export default function AboutPage() {
       </section>
       
       <section className="py-16 md:py-24 bg-primary text-primary-foreground">
-          <div className="container mx-auto text-center">
+          <div className="container text-center">
               <h2 className="text-3xl font-bold mb-4">Download Our Company Profile</h2>
               <p className="text-lg max-w-2xl mx-auto mb-8">Get a detailed overview of our services, team, and impact.</p>
               <Button asChild size="lg" variant="secondary">

@@ -8,7 +8,17 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
+      width: {
+        '85': '85%',
+      },
       fontFamily: {
         sans: ["var(--font-questrial)", "sans-serif"],
         body: ["var(--font-questrial)", "sans-serif"],

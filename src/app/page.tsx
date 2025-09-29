@@ -49,7 +49,7 @@ export default function Home() {
       </section>
 
       <section className="py-16 md:py-24 bg-secondary">
-        <div className="container mx-auto text-center">
+        <div className="container text-center">
           <h2 className="text-3xl font-bold mb-4">
             Transforming Africa Through Innovative Advisory
           </h2>
@@ -89,7 +89,7 @@ export default function Home() {
       </section>
 
       <section className="py-16 md:py-24">
-        <div className="container mx-auto text-center">
+        <div className="container text-center">
           <h2 className="text-3xl font-bold mb-12">Recent Insights</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {featuredInsights.map((insight) => (
@@ -115,7 +115,7 @@ export default function Home() {
       </section>
 
       <section className="py-16 md:py-24 bg-secondary">
-        <div className="container mx-auto text-center">
+        <div className="container text-center">
           <h2 className="text-3xl font-bold mb-12">Impact Snapshot</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div>
@@ -146,7 +146,7 @@ export default function Home() {
       </section>
 
       <section className="py-16 md:py-24 bg-primary text-primary-foreground">
-        <div className="container mx-auto text-center">
+        <div className="container text-center">
           <h2 className="text-3xl font-bold mb-4">Partner for Progress</h2>
           <p className="text-lg max-w-2xl mx-auto mb-8">
             Collaborate with us to unlock growth and impact.

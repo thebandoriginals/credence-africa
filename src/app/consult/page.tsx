@@ -9,7 +9,7 @@ export default function ConsultPage() {
   return (
     <div className="flex-1">
       <section className="py-16 md:py-24 bg-secondary">
-        <div className="container mx-auto text-center">
+        <div className="container text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Book a Consultation
           </h1>

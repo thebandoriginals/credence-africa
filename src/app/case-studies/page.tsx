@@ -14,7 +14,7 @@ export default function CaseStudiesPage() {
   return (
     <div className="flex-1">
       <section className="py-16 md:py-24 bg-secondary">
-        <div className="container mx-auto text-center">
+        <div className="container text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Real Results, Real Impact
           </h1>
@@ -26,7 +26,7 @@ export default function CaseStudiesPage() {
       </section>
 
       <section className="py-16 md:py-24">
-        <div className="container mx-auto">
+        <div className="container">
           <h2 className="text-3xl font-bold mb-12 text-center">Featured Case Studies</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {featuredStudies.map((study) => (
@@ -44,7 +44,7 @@ export default function CaseStudiesPage() {
       </section>
 
       <section className="py-16 md:py-24 bg-secondary">
-        <div className="container mx-auto grid md:grid-cols-2 gap-16 items-center">
+        <div className="container grid md:grid-cols-2 gap-16 items-center">
             <div>
                 <h2 className="text-3xl font-bold mb-4">Access Full Reports</h2>
                 <p className="text-muted-foreground">Unlock in-depth case studies with a quick form.</p>

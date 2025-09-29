@@ -18,7 +18,7 @@ export default function HospitalityTourismPage() {
   return (
     <div className="flex-1">
       <section className="py-16 md:py-24 bg-secondary">
-        <div className="container mx-auto text-center">
+        <div className="container text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Hospitality & Tourism
           </h1>
@@ -29,7 +29,7 @@ export default function HospitalityTourismPage() {
       </section>
 
       <section className="py-16 md:py-24">
-        <div className="container mx-auto grid md:grid-cols-2 gap-16 items-start">
+        <div className="container grid md:grid-cols-2 gap-16 items-start">
           <div>
             <h2 className="text-3xl font-bold mb-6">Our Programs</h2>
             <ul className="space-y-4">
@@ -56,7 +56,7 @@ export default function HospitalityTourismPage() {
       </section>
       
       <section className="py-16 md:py-24 bg-primary text-primary-foreground">
-        <div className="container mx-auto text-center">
+        <div className="container text-center">
           <h2 className="text-3xl font-bold mb-4">
             Boost Your Destination
           </h2>

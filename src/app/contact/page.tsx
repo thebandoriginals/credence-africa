@@ -8,7 +8,7 @@ export default function ContactPage() {
   return (
     <div className="flex-1">
       <section className="py-16 md:py-24 bg-secondary">
-        <div className="container mx-auto text-center">
+        <div className="container text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
           <p className="max-w-3xl mx-auto text-lg text-muted-foreground">
             Have a question? Get in touch with our team.
@@ -17,7 +17,7 @@ export default function ContactPage() {
       </section>
 
       <section className="py-16 md:py-24">
-        <div className="container mx-auto grid md:grid-cols-2 gap-16">
+        <div className="container grid md:grid-cols-2 gap-16">
           <div>
             <h2 className="text-3xl font-bold mb-6">General Inquiry</h2>
             <Card>

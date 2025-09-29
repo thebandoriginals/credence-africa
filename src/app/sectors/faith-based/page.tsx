@@ -18,7 +18,7 @@ export default function FaithBasedPage() {
   return (
     <div className="flex-1">
       <section className="py-16 md:py-24 bg-secondary">
-        <div className="container mx-auto text-center">
+        <div className="container text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Faith-Based Organizations
           </h1>
@@ -30,7 +30,7 @@ export default function FaithBasedPage() {
       </section>
 
       <section className="py-16 md:py-24">
-        <div className="container mx-auto grid md:grid-cols-2 gap-16 items-start">
+        <div className="container grid md:grid-cols-2 gap-16 items-start">
           <div>
             <h2 className="text-3xl font-bold mb-6">Our Capabilities</h2>
             <ul className="space-y-4">
@@ -54,7 +54,7 @@ export default function FaithBasedPage() {
             </ul>
           </div>
         </div>
-        <div className="container mx-auto mt-16">
+        <div className="container mt-16">
             <div className="bg-card p-8 rounded-lg shadow-md">
                  <h2 className="text-3xl font-bold mb-6">Who We Serve</h2>
                  <p className="text-muted-foreground">Faith-based organizations, religious networks.</p>
@@ -63,7 +63,7 @@ export default function FaithBasedPage() {
       </section>
       
       <section className="py-16 md:py-24 bg-primary text-primary-foreground">
-        <div className="container mx-auto text-center">
+        <div className="container text-center">
           <h2 className="text-3xl font-bold mb-4">
             Partner with Us
           </h2>

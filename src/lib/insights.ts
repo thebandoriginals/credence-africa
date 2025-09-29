@@ -128,6 +128,7 @@ export const staticInsights = [
 ];
 
 function slugify(text: string) {
+    if (!text) return '';
     return text
       .toLowerCase()
       .replace(/ /g, '-')
@@ -135,32 +136,45 @@ function slugify(text: string) {
 }
 
 export async function getInsights(): Promise<Insight[]> {
-    const insightsCollection = collection(db, 'insights');
-    const insightsQuery = query(insightsCollection, orderBy('createdAt', 'desc'));
-    const snapshot = await getDocs(insightsQuery);
-    if (snapshot.empty) {
-      return staticInsights;
+    try {
+        const insightsCollection = collection(db, 'insights');
+        const insightsQuery = query(insightsCollection, orderBy('createdAt', 'desc'));
+        const snapshot = await getDocs(insightsQuery);
+    
+        const insights: Insight[] = snapshot.docs.map(doc => {
+            const data = doc.data();
+            const slug = slugify(data.title);
+            return {
+                id: doc.id,
+                slug: slug,
+                title: data.title,
+                content: data.content,
+                author: data.author,
+                date: data.createdAt?.toDate().toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                }) || new Date().toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                }),
+                image: `https://picsum.photos/seed/${slug}/1200/630`,
+            };
+        });
+
+        // If there are no dynamic insights, return the static ones.
+        // Otherwise, return the dynamic ones.
+        if (insights.length === 0) {
+            return staticInsights;
+        }
+      
+        return insights;
+    } catch (error) {
+        console.error("Error fetching insights from Firestore:", error);
+        // Fallback to static insights if Firestore fails
+        return staticInsights;
     }
-  
-    const insights: Insight[] = snapshot.docs.map(doc => {
-      const data = doc.data();
-      const slug = slugify(data.title);
-      return {
-        id: doc.id,
-        slug: slug,
-        title: data.title,
-        content: data.content,
-        author: data.author,
-        date: data.createdAt.toDate().toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-        }),
-        image: `https://picsum.photos/seed/${slug}/1200/630`,
-      };
-    });
-  
-    return [...insights, ...staticInsights];
 }
 
 export async function getInsight(slug: string): Promise<Insight | undefined> {

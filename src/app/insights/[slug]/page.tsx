@@ -1,10 +1,7 @@
 
-"use client";
-
 import { notFound } from "next/navigation";
 import { getInsight, type Insight } from "@/lib/insights";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 interface InsightPageProps {
   params: {
@@ -12,30 +9,32 @@ interface InsightPageProps {
   };
 }
 
-export default function InsightPage({ params }: InsightPageProps) {
-  const [insight, setInsight] = useState<Insight | null>(null);
-  const [loading, setLoading] = useState(true);
+// This function generates the static pages at build time
+export async function generateStaticParams() {
+    const insights = await getInsights();
+    return insights.map((insight) => ({
+      slug: insight.slug,
+    }));
+}
 
-  useEffect(() => {
-    async function fetchInsight() {
-      const fetchedInsight = await getInsight(params.slug);
-      if (!fetchedInsight) {
-        notFound();
-      } else {
-        setInsight(fetchedInsight);
-      }
-      setLoading(false);
+export async function generateMetadata({ params }: InsightPageProps) {
+    const insight = await getInsight(params.slug);
+    if (!insight) {
+      return {
+        title: "Insight Not Found",
+      };
     }
-    fetchInsight();
-  }, [params.slug]);
-
-
-  if (loading) {
-    return <div className="py-12 lg:py-16 text-center">Loading insight...</div>;
+    return {
+      title: insight.title,
+      description: insight.content.substring(0, 160).replace(/<[^>]*>/g, ''),
+    };
   }
 
+export default async function InsightPage({ params }: InsightPageProps) {
+  const insight = await getInsight(params.slug);
+
   if (!insight) {
-    return notFound();
+    notFound();
   }
 
   return (
@@ -64,4 +63,3 @@ export default function InsightPage({ params }: InsightPageProps) {
     </article>
   );
 }
-

@@ -25,9 +25,14 @@ export default function InsightsPage() {
     useEffect(() => {
         async function fetchInsights() {
             setLoading(true);
-            const fetchedInsights = await getInsights();
-            setInsights(fetchedInsights);
-            setLoading(false);
+            try {
+                const fetchedInsights = await getInsights();
+                setInsights(fetchedInsights);
+            } catch (error) {
+                console.error("Failed to fetch insights:", error);
+            } finally {
+                setLoading(false);
+            }
         }
         fetchInsights();
     }, []);
@@ -61,8 +66,8 @@ export default function InsightsPage() {
                 <h2 className="text-3xl font-bold text-center mb-10">Recent Insights</h2>
                 <div className="mt-10 grid gap-6">
                     {loading ? (
-                        <p>Loading insights...</p>
-                    ) : (
+                        <p className="text-center">Loading insights...</p>
+                    ) : insights.length > 0 ? (
                         insights.map((insight) => (
                         <div key={insight.id} className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border rounded-lg">
                             <div>
@@ -74,6 +79,8 @@ export default function InsightsPage() {
                             </Button>
                         </div>
                         ))
+                    ) : (
+                        <p className="text-center text-muted-foreground">No insights published yet.</p>
                     )}
                   </div>
             </section>

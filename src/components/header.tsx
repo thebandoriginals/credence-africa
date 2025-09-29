@@ -59,16 +59,18 @@ export function Header({insights}: {insights: Insight[]}) {
 
   return (
     <>
-    <div className="bg-primary text-primary-foreground">
-      <Marquee pauseOnHover>
-        {insights.map((insight) => (
-          <Link key={insight.id} href={`/insights/${insight.slug}`} className="flex items-center gap-4 text-sm font-medium whitespace-nowrap">
-            <span>{insight.title}</span>
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        ))}
-      </Marquee>
-    </div>
+    {insights && insights.length > 0 && (
+      <div className="bg-primary text-primary-foreground">
+        <Marquee pauseOnHover>
+          {insights.map((insight) => (
+            <Link key={insight.id} href={`/insights/${insight.slug}`} className="flex items-center gap-4 text-sm font-medium whitespace-nowrap mx-4">
+              <span>{insight.title}</span>
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          ))}
+        </Marquee>
+      </div>
+    )}
     <header className="sticky top-0 z-50 w-full border-b bg-white">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2 font-bold">

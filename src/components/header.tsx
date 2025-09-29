@@ -75,10 +75,10 @@ export function Header() {
               ))}
                <NavigationMenuItem>
                 <NavigationMenuTrigger className={cn(navigationMenuTriggerStyle(),"hover:underline hover:decoration-primary hover:underline-offset-4 hover:decoration-2","data-[active]:underline data-[active]:decoration-primary data-[active]:underline-offset-4 data-[active]:decoration-2 bg-white hover:bg-white")}>
-                  <Link href="/sectors" className={cn(pathname === "/sectors" ? 'underline decoration-primary underline-offset-4 decoration-2' : '')}>Sectors</Link>
+                  <Link href="/sectors" className={cn(pathname.startsWith("/sectors") ? 'underline decoration-primary underline-offset-4 decoration-2' : '')}>Sectors</Link>
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="grid w-[600px] grid-cols-2 gap-4 p-4">
+                  <div className="grid w-[900px] grid-cols-3 gap-4 p-4">
                     {sectorLinks.map((sector) => (
                       <NavigationMenuLink key={sector.name} asChild>
                         <Link

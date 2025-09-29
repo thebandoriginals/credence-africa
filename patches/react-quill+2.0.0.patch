@@ -1,0 +1,41 @@
+patch-package
+--- a/node_modules/react-quill/lib/index.js
++++ b/node_modules/react-quill/lib/index.js
+@@ -512,7 +512,7 @@
+ 	},
+ 
+ 	getEditor: function getEditor() {
+-		return this.editor;
++		return this.editor
+ 	},
+ 
+ 	/**
+@@ -522,7 +522,7 @@
+ 	 */
+ 	getEditingArea: function getEditingArea() {
+ 		var editor = this.getEditor();
+-		var root = ReactDOM.findDOMNode(this).querySelector('.ql-editor');
++		var root = this.editingArea;
+ 		return root;
+ 	},
+ 
+--- a/node_modules/react-quill/lib/component.js
++++ b/node_modules/react-quill/lib/component.js
+@@ -402,7 +402,7 @@
+ 	},
+ 
+ 	getEditor: function getEditor() {
+-		return this.editor;
++		return this.editor
+ 	},
+ 
+ 	/**
+@@ -412,7 +412,7 @@
+ 	 */
+ 	getEditingArea: function getEditingArea() {
+ 		var editor = this.getEditor();
+-		var root = ReactDOM.findDOMNode(this).querySelector('.ql-editor');
++		var root = this.editingArea;
+ 		return root;
+ 	},
+ 

@@ -13,6 +13,7 @@ import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { Menu } from "lucide-react";
 import { Logo } from "./logo";
 import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -40,7 +41,11 @@ export function Header() {
                 <NavigationMenuItem key={link.href}>
                   <Link href={link.href} passHref asChild>
                     <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
+                      className={cn(
+                        navigationMenuTriggerStyle(),
+                        "hover:underline hover:decoration-primary hover:underline-offset-4 hover:decoration-2",
+                        "data-[active]:underline data-[active]:decoration-primary data-[active]:underline-offset-4 data-[active]:decoration-2"
+                      )}
                       active={pathname === link.href}
                     >
                       {link.label}

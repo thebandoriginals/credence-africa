@@ -1,6 +1,6 @@
 
 import { notFound } from "next/navigation";
-import { getInsight, type Insight } from "@/lib/insights";
+import { getInsight, getInsights, type Insight } from "@/lib/insights";
 import Image from "next/image";
 
 interface InsightPageProps {

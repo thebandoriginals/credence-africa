@@ -1,110 +1,159 @@
 
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db, auth } from '@/lib/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useForm, Controller } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css';
+import { useToast } from '@/hooks/use-toast';
 
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
+const insightSchema = z.object({
+  title: z.string().min(1, 'Title is required'),
+  content: z.string().min(1, 'Content is required'),
+  category: z.string().min(1, 'Category is required'),
+  tags: z.string().optional(),
+});
+
+type InsightFormValues = z.infer<typeof insightSchema>;
+
 export default function NewInsightPage() {
   const [user] = useAuthState(auth);
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [category, setCategory] = useState('');
-  const [tags, setTags] = useState('');
-  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const [isClient, setIsClient] = useState(false);
+  const { toast } = useToast();
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  const form = useForm<InsightFormValues>({
+    resolver: zodResolver(insightSchema),
+    defaultValues: {
+      title: '',
+      content: '',
+      category: '',
+      tags: '',
+    },
+  });
 
-  const handleCreateInsight = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: InsightFormValues) => {
     if (!user) {
-      setError("You must be logged in to create an insight.");
+      toast({
+        variant: "destructive",
+        title: "Authentication Error",
+        description: "You must be logged in to create an insight.",
+      });
       return;
     }
 
-    if (!title || !content || !category) {
-      setError("Please fill out all required fields.");
-      return;
-    }
-
+    setLoading(true);
     try {
       await addDoc(collection(db, 'insights'), {
-        title,
-        content,
-        category,
-        tags: tags.split(',').map(tag => tag.trim()),
+        title: data.title,
+        content: data.content,
+        category: data.category,
+        tags: data.tags?.split(',').map(tag => tag.trim()).filter(tag => tag) || [],
         author: user.displayName || user.email,
         authorId: user.uid,
         createdAt: serverTimestamp(),
-        published: true, // Or based on a form field
+        published: true,
       });
-      router.push('/admin'); // Redirect to admin dashboard after creation
+      toast({
+        title: "Success",
+        description: "Insight published successfully.",
+      });
+      router.push('/admin');
     } catch (err: any) {
-      setError(err.message);
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: err.message,
+      });
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="p-8">
       <h1 className="text-3xl font-bold mb-8">Create New Insight</h1>
-      <form onSubmit={handleCreateInsight} className="space-y-6">
-        <div className="space-y-2">
-          <Label htmlFor="title">Title</Label>
-          <Input
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-            placeholder="Insight Title"
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="content">Content</Label>
-          <div className="bg-white">
-            {isClient && (
-              <ReactQuill
-                theme="snow"
-                value={content}
-                onChange={setContent}
-              />
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <FormField
+            control={form.control}
+            name="title"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Title</FormLabel>
+                <FormControl>
+                  <Input placeholder="Insight Title" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
             )}
-          </div>
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="category">Category</Label>
-          <Input
-            id="category"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            required
-            placeholder="e.g., Finance, Technology"
           />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="tags">Tags (comma-separated)</Label>
-          <Input
-            id="tags"
-            value={tags}
-            onChange={(e) => setTags(e.target.value)}
-            placeholder="e.g., Africa, Investment, Policy"
+
+          <FormField
+            control={form.control}
+            name="content"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Content</FormLabel>
+                <FormControl>
+                  <div className="bg-white">
+                    <ReactQuill
+                      theme="snow"
+                      value={field.value}
+                      onChange={field.onChange}
+                    />
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-        </div>
-        {error && <p className="text-destructive text-sm">{error}</p>}
-        <Button type="submit">Publish Insight</Button>
-      </form>
+
+          <FormField
+            control={form.control}
+            name="category"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Category</FormLabel>
+                <FormControl>
+                  <Input placeholder="e.g., Finance, Technology" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="tags"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Tags (comma-separated)</FormLabel>
+                <FormControl>
+                  <Input placeholder="e.g., Africa, Investment, Policy" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <Button type="submit" disabled={loading}>
+            {loading ? 'Publishing...' : 'Publish Insight'}
+          </Button>
+        </form>
+      </Form>
     </div>
   );
 }

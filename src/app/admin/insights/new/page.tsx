@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db, auth } from '@/lib/firebase';
@@ -9,15 +9,10 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
 import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css';
 
-const ReactQuill = dynamic(() => import('react-quill'), {
-  ssr: false,
-  loading: () => <p>Loading editor...</p>,
-});
-
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 export default function NewInsightPage() {
   const [user] = useAuthState(auth);
@@ -27,6 +22,11 @@ export default function NewInsightPage() {
   const [tags, setTags] = useState('');
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleCreateInsight = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,11 +74,13 @@ export default function NewInsightPage() {
         <div className="space-y-2">
           <Label htmlFor="content">Content</Label>
           <div className="bg-white">
-            <ReactQuill
-              theme="snow"
-              value={content}
-              onChange={setContent}
-             />
+            {isClient && (
+              <ReactQuill
+                theme="snow"
+                value={content}
+                onChange={setContent}
+              />
+            )}
           </div>
         </div>
         <div className="space-y-2">

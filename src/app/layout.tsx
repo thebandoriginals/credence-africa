@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Questrial } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
 
 const questrial = Questrial({ subsets: ["latin"], weight: ["400"], variable: "--font-questrial" });
 
@@ -22,9 +20,7 @@ export default function RootLayout({
         className={`${questrial.variable} font-sans antialiased bg-background text-foreground`}
       >
         <div className="flex flex-col min-h-screen">
-          <Header />
           <main className="flex-grow">{children}</main>
-          <Footer />
         </div>
       </body>
     </html>

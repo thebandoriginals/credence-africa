@@ -4,18 +4,18 @@ import { Leaf, Handshake, Mic, School, Church, HeartPulse, Bus, Users, Laptop, B
 import Link from "next/link";
 
 const sectors = [
-    { icon: <Leaf />, name: "Agriculture & Food", description: "Enhancing agribusiness operations, supply chain efficiency, and climate-smart farming." },
-    { icon: <Handshake />, name: "Cooperatives & Social Economy", description: "Strengthening governance, leadership, and financial sustainability." },
-    { icon: <Mic />, name: "Creative & Digital Economy", description: "Supporting artists, digital entrepreneurs, and content creators with commercialization and IP protection." },
-    { icon: <School />, name: "Education & Skills Development", description: "Equipping educators and policymakers with modern strategies in curriculum and institutional leadership." },
-    { icon: <Church />, name: "Faith-Based Organizations", description: "Providing governance, fundraising, and community impact strategies." },
-    { icon: <HeartPulse />, name: "Healthcare & Wellness", description: "Improving healthcare management, financing, and digital health solutions." },
-    { icon: <Plane />, name: "Hospitality & Tourism", description: "Driving sustainable tourism and business growth strategies." },
-    { icon: <Bus />, name: "Mobility & Logistics", description: "Advancing smart transport, sustainable mobility, and logistics solutions." },
-    { icon: <Users />, name: "Non-Profit Sector", description: "Strengthening impact measurement, fundraising, and governance." },
-    { icon: <Building />, name: "Public Sector & Governance", description: "Enhancing policy development, regulatory frameworks, and governance efficiency." },
-    { icon: <Briefcase />, name: "SMEs & Startups", description: "Providing business model innovation, funding access, and scaling strategies." },
-    { icon: <Laptop />, name: "Technology & Digital Economy", description: "Driving innovation in fintech, AI, blockchain, and digital transformation." },
+    { icon: <Leaf />, name: "Agriculture & Food", description: "Enhancing agribusiness operations, supply chain efficiency, and climate-smart farming.", href: "/sectors/agriculture-food" },
+    { icon: <Mic />, name: "Creative & Digital Economy", description: "Supporting artists, digital entrepreneurs, and content creators with commercialization and IP protection.", href: "/sectors/creative-digital-economy" },
+    { icon: <School />, name: "Education & Skills Development", description: "Equipping educators and policymakers with modern strategies in curriculum and institutional leadership.", href: "/sectors/education-skills-development" },
+    { icon: <Church />, name: "Faith-Based Organizations", description: "Providing governance, fundraising, and community impact strategies.", href: "/sectors/faith-based-organizations" },
+    { icon: <HeartPulse />, name: "Healthcare & Wellness", description: "Improving healthcare management, financing, and digital health solutions.", href: "/sectors/healthcare-wellness" },
+    { icon: <Plane />, name: "Hospitality & Tourism", description: "Driving sustainable tourism and business growth strategies.", href: "/sectors/hospitality-tourism" },
+    { icon: <Users />, name: "Non-Profit Sector", description: "Strengthening impact measurement, fundraising, and governance.", href: "/sectors/non-profit-sector" },
+    { icon: <Building />, name: "Public Sector & Governance", description: "Enhancing policy development, regulatory frameworks, and governance efficiency.", href: "/sectors/public-sector-governance" },
+    { icon: <Briefcase />, name: "SMEs & Startups", description: "Providing business model innovation, funding access, and scaling strategies.", href: "/sectors/smes-startups" },
+    { icon: <Laptop />, name: "Technology & Digital Economy", description: "Driving innovation in fintech, AI, blockchain, and digital transformation.", href: "/sectors/technology-digital-economy" },
+    { icon: <Handshake />, name: "Cooperatives & Social Economy", description: "Strengthening governance, leadership, and financial sustainability.", href: "/consult" },
+    { icon: <Bus />, name: "Mobility & Logistics", description: "Advancing smart transport, sustainable mobility, and logistics solutions.", href: "/consult" },
 ];
 
 export default function SectorsPage() {
@@ -37,7 +37,7 @@ export default function SectorsPage() {
                         <CardContent className="flex-grow">
                             <p className="text-muted-foreground">{sector.description}</p>
                             <Button asChild variant="link" className="p-0 mt-4">
-                                <Link href="/consult">Learn More</Link>
+                                <Link href={sector.href}>Learn More</Link>
                             </Button>
                         </CardContent>
                     </Card>

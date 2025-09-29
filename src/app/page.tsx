@@ -212,9 +212,9 @@ export default function Home() {
                     <Link href="/case-studies">View Case Studies</Link>
                 </Button>
             </div>
-            <div className="relative h-96 rounded-lg overflow-hidden">
+            <div className="relative h-64 md:h-96 rounded-lg overflow-hidden">
                 <Image
-                    src={PlaceHolderImages.about}
+                    src="/credcase.webp"
                     alt="Team in a meeting"
                     fill
                     className="object-cover"

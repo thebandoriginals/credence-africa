@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { BarChart, Scale, FileText, Building, Globe, Landmark } from "lucide-react";
 import Link from "next/link";
+import { insights } from "@/lib/insights";
 
 const categories = [
     { icon: <BarChart />, title: "Capital, Investment & Blended Finance", description: "Funding trends, investor mandates, and catalytic finance models." },
@@ -12,15 +13,6 @@ const categories = [
     { icon: <Building />, title: "Corporate Structuring, Tax & Expansion", description: "Cross-border structuring, tax efficiency, and jurisdictional risk." },
     { icon: <Globe />, title: "Market Entry & Sector Intelligence", description: "Localization playbooks, sector outlooks, and trade updates." },
 ];
-
-const recentInsights = [
-    { title: "Navigating East Africa’s Evolving Tax Landscape", date: "28 May 2025" },
-    { title: "IP Monetization Strategies for African Creators", date: "28 May 2025" },
-    { title: "Blended Finance: Unlocking Capital for Climate Resilience", date: "25 May 2025" },
-    { title: "Diaspora Investment and the Rise of Legacy Structuring", date: "25 May 2025" },
-    { title: "The Real Cost of Compliance in 2025: What Regulators Are Watching", date: "25 May 2025" },
-];
-
 
 export default function InsightsPage() {
     return (
@@ -51,14 +43,14 @@ export default function InsightsPage() {
             <section id="recent-insights">
                 <h2 className="text-3xl font-bold text-center mb-10">Recent Insights</h2>
                 <div className="mt-10 grid gap-6">
-                    {recentInsights.map((insight) => (
+                    {insights.map((insight) => (
                       <div key={insight.title} className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border rounded-lg">
                         <div>
                           <h3 className="font-semibold text-lg">{insight.title}</h3>
                           <p className="text-sm text-muted-foreground mt-1">{insight.date}</p>
                         </div>
                         <Button asChild variant="link" className="mt-2 sm:mt-0">
-                          <Link href="#">Read More</Link>
+                          <Link href={`/insights/${insight.slug}`}>Read More</Link>
                         </Button>
                       </div>
                     ))}

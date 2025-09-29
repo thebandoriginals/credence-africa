@@ -3,12 +3,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle, Download } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import PlaceHolderImages from "@/lib/placeholder-images.json";
 
 const teamMembers = [
-  { name: "Team Member 1", role: "Capital Advisor" },
-  { name: "Team Member 2", role: "Policy Strategist" },
-  { name: "Team Member 3", role: "Business Architect" },
-  { name: "Team Member 4", role: "Legal Counsel" },
+  { name: "Team Member 1", role: "Capital Advisor", image: PlaceHolderImages.team1 },
+  { name: "Team Member 2", role: "Policy Strategist", image: PlaceHolderImages.team2 },
+  { name: "Team Member 3", role: "Business Architect", image: PlaceHolderImages.team3 },
+  { name: "Team Member 4", role: "Legal Counsel", image: PlaceHolderImages.team4 },
 ];
 
 const partners = [
@@ -78,7 +79,7 @@ export default function AboutUsPage() {
             <div key={member.name} className="text-center">
               <div className="relative h-64 w-full rounded-lg overflow-hidden mb-4 bg-secondary">
                   <Image 
-                    src={`https://picsum.photos/seed/${member.name.replace(/\s/g, '')}/400/400`} 
+                    src={member.image}
                     alt={member.name} 
                     fill={true}
                     style={{objectFit: "cover"}}

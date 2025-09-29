@@ -24,14 +24,14 @@ const recentInsights = [
 
 export default function InsightsPage() {
     return (
-        <div className="py-16 lg:py-24">
+        <div className="py-16 lg:py-24 space-y-24">
             <div className="text-center">
                 <h1 className="text-4xl font-bold">Credence Insights</h1>
                 <p className="mt-4 text-xl text-muted-foreground max-w-3xl mx-auto">Clarity that Powers Strategy. Intelligence that Shapes Action.</p>
                 <p className="mt-4 max-w-4xl mx-auto">Credence Insights delivers expert briefings, regulatory intelligence, capital market updates, and sector-specific analysis for Africa-focused businesses, investors, and innovators.</p>
             </div>
 
-            <section id="content-categories" className="mt-16">
+            <section id="content-categories">
                  <h2 className="text-3xl font-bold text-center mb-10">Content Categories</h2>
                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                      {categories.map(category => (
@@ -48,7 +48,7 @@ export default function InsightsPage() {
                  </div>
             </section>
             
-            <section id="recent-insights" className="mt-24">
+            <section id="recent-insights">
                 <h2 className="text-3xl font-bold text-center mb-10">Recent Insights</h2>
                 <div className="mt-10 grid gap-6">
                     {recentInsights.map((insight) => (
@@ -65,7 +65,7 @@ export default function InsightsPage() {
                   </div>
             </section>
 
-            <section id="subscribe" className="mt-24 bg-secondary py-16">
+            <section id="subscribe" className="bg-secondary py-16">
                 <div className="container mx-auto text-center">
                     <h2 className="text-3xl font-bold">Subscribe to the Credence Insights Briefing</h2>
                     <p className="mt-4 text-muted-foreground">Get strategic intelligence straight to your inbox.</p>

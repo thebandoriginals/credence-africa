@@ -1,146 +1,258 @@
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import PlaceHolderImages from "@/lib/placeholder-images.json";
-import { ArrowRight, CheckCircle, LandPlot, Lightbulb, LineChart, Mail, Phone, Users } from "lucide-react";
+import { ArrowRight, CheckCircle, Mail, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+const featuredSolutions = [
+    {
+        title: "Capital Raising & Blended Finance",
+        description: "Unlock capital and structure for impact across markets and mandates.",
+        href: "/services#capital-raising"
+    },
+    {
+        title: "Trade & Investment Structuring",
+        description: "Enter markets confidently with strategic positioning and compliance.",
+        href: "/services#trade-investment"
+    },
+    {
+        title: "Corporate Structuring & Tax Strategy",
+        description: "Structure to scale, govern to endure, and optimize for generations.",
+        href: "/services#enterprise-architecture"
+    },
+    {
+        title: "IP Commercialization & Talent Strategy",
+        description: "Protect your ideas, monetize your identity, and scale your influence.",
+        href: "/services#ip-commercialization"
+    },
+    {
+        title: "Regulatory Affairs & Public Policy",
+        description: "Engage power, navigate policy, and shape the future of your industry.",
+        href: "/services#public-affairs"
+    },
+]
+
+const recentInsights = [
+    { title: "Navigating East Africa’s Evolving Tax Landscape", date: "28 May 2025", href: "/insights" },
+    { title: "IP Monetization Strategies for African Creators", date: "28 May 2025", href: "/insights" },
+    { title: "Blended Finance: Unlocking Capital for Climate Resilience", date: "25 May 2025", href: "/insights" },
+    { title: "Diaspora Investment and the Rise of Legacy Structuring", date: "25 May 2025", href: "/insights" },
+    { title: "The Real Cost of Compliance in 2025: What Regulators Are Watching", date: "25 May 2025", href: "/insights" },
+];
+
+const whatWeSolve = [
+    "Capital and investment readiness for high-growth ventures",
+    "Regulatory licensing and multi-agency compliance strategy",
+    "Market entry across East Africa and diaspora re-entry structuring",
+    "Cross-border tax and entity structuring",
+    "Government relations, public policy tracking, and advocacy",
+    "Monetization of IP, content, brand, and digital assets",
+    "Succession, legacy, and trust planning for entrepreneurs and families",
+]
+
 export default function Home() {
   return (
-    <div className="flex flex-col">
-      <section className="relative h-[60vh] flex items-center justify-center text-center text-white">
-        <Image
-          src={PlaceHolderImages.hero}
-          alt="African Landscape"
-          fill
-          className="object-cover -z-10"
-          data-ai-hint="african landscape"
-        />
-        <div className="absolute inset-0 bg-black/50 -z-10" />
-        <div className="container px-4 md:px-6">
-          <h1 className="text-4xl md:text-6xl font-bold">Strategic Advisory for Africa’s Next Growth Frontier</h1>
-          <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto">
-            We are a multi-disciplinary advisory firm structuring Africa’s social, economic, and cultural capital.
-          </p>
-          <Button asChild size="lg" className="mt-8">
-            <Link href="/consult">
-              Book a Consultation <ArrowRight className="ml-2" />
-            </Link>
+    <div className="flex flex-col space-y-24 py-16 lg:py-24">
+      {/* Hero Section */}
+      <section className="text-center">
+        <h1 className="text-4xl md:text-5xl font-bold max-w-4xl mx-auto">Credence Africa — Strategic Advisory for Africa’s Next Growth Frontier</h1>
+        <p className="mt-6 text-xl text-muted-foreground max-w-3xl mx-auto">
+          Smart insights. Practical execution. Structures that scale in complexity and across borders.
+        </p>
+        <div className="mt-8 flex justify-center gap-4">
+          <Button asChild size="lg">
+            <Link href="/services">Explore Services</Link>
+          </Button>
+          <Button asChild size="lg" variant="outline">
+            <Link href="/consult">Book a Consultation</Link>
           </Button>
         </div>
       </section>
+      
+      {/* Who We Are */}
+      <section className="text-center">
+        <h2 className="text-3xl font-bold">Who We Are</h2>
+        <p className="mt-4 max-w-3xl mx-auto text-muted-foreground">
+          Credence Africa is a pan-African strategic advisory and social enterprise platform operating at the intersection of capital, governance, compliance, and public affairs. We help businesses, governments, nonprofits, and financial institutions navigate Africa’s opportunity zones where risk meets scale.
+        </p>
+        <div className="mt-12 grid md:grid-cols-3 gap-8">
+            <div className="p-6">
+                <h3 className="font-semibold text-xl">Pan-African Perspective</h3>
+                <p className="mt-2 text-muted-foreground">Operating across multiple jurisdictions at the nexus of capital, compliance, governance, and policy.</p>
+            </div>
+            <div className="p-6">
+                <h3 className="font-semibold text-xl">Growth Catalysts</h3>
+                <p className="mt-2 text-muted-foreground">Unlocking capital, structuring entities, navigating regulation, and scaling impact.</p>
+            </div>
+            <div className="p-6">
+                <h3 className="font-semibold text-xl">Execution Partners</h3>
+                <p className="mt-2 text-muted-foreground">Delivering actionable strategies that withstand scrutiny in high-complexity environments.</p>
+            </div>
+        </div>
+        <div className="mt-8 flex justify-center gap-4">
+            <Button asChild variant="outline">
+                <Link href="/about">Our Full Story</Link>
+            </Button>
+            <Button asChild>
+                <Link href="/about#team">Meet the Team</Link>
+            </Button>
+        </div>
+      </section>
 
-      {/* About Us Summary */}
-      <section className="py-16 lg:py-24">
-        <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-bold">About Credence Africa</h2>
-            <p className="mt-4 text-muted-foreground">
-              We deliver strategy that reflects the real-world dynamics of doing business in Africa, combining deep local understanding with global-standard execution. Our team of lawyers, policy strategists, capital advisors, and business architects brings decades of experience across law firms, multilateral institutions, and public sector ecosystems.
-            </p>
-            <div className="mt-6 flex gap-4">
-              <Button asChild>
-                <Link href="/about">Learn More</Link>
-              </Button>
-              <Button asChild variant="outline">
-                <Link href="/services">Our Services</Link>
-              </Button>
+      {/* Quote & Stats */}
+      <section className="bg-secondary py-20 text-center">
+          <div className="container mx-auto">
+            <p className="text-2xl font-medium max-w-4xl mx-auto">&quot;We combine deep local understanding with global-standard execution to help clients navigate Africa&apos;s opportunity zones — where risk meets scale.&quot;</p>
+            <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <p className="text-4xl font-bold text-primary">10+</p>
+                    <p className="mt-2 text-muted-foreground">Years of Experience</p>
+                </div>
+                 <div>
+                    <p className="text-4xl font-bold text-primary">50+</p>
+                    <p className="mt-2 text-muted-foreground">Clients Served</p>
+                </div>
+                 <div>
+                    <p className="text-4xl font-bold text-primary">8</p>
+                    <p className="mt-2 text-muted-foreground">African Markets</p>
+                </div>
+                 <div>
+                    <p className="text-4xl font-bold text-primary">$25M+</p>
+                    <p className="mt-2 text-muted-foreground">Capital Facilitated</p>
+                </div>
             </div>
           </div>
+      </section>
+
+      {/* What We Solve */}
+      <section>
+        <h2 className="text-3xl font-bold text-center">What We Solve</h2>
+        <div className="mt-12 grid sm:grid-cols-2 gap-x-8 gap-y-4">
+            {whatWeSolve.map((item) => (
+                <div key={item} className="flex items-start gap-3">
+                    <CheckCircle className="size-6 text-primary mt-1 shrink-0" />
+                    <p>{item}</p>
+                </div>
+            ))}
+        </div>
+      </section>
+
+      {/* Featured Solutions */}
+      <section>
+          <h2 className="text-3xl font-bold text-center">Featured Solutions</h2>
+          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {featuredSolutions.map((solution) => (
+                  <Card key={solution.title}>
+                      <CardHeader>
+                          <CardTitle>{solution.title}</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                          <p className="text-muted-foreground mb-4">{solution.description}</p>
+                          <Button asChild variant="link" className="p-0">
+                            <Link href={solution.href}>Learn More <ArrowRight className="ml-2 size-4" /></Link>
+                          </Button>
+                      </CardContent>
+                  </Card>
+              ))}
+          </div>
+          <div className="text-center mt-12">
+            <Button asChild size="lg">
+                <Link href="/services">See All Services</Link>
+            </Button>
+          </div>
+      </section>
+
+      {/* Recent Insights */}
+      <section>
+        <h2 className="text-3xl font-bold text-center">Recent Insights</h2>
+        <div className="mt-12 grid gap-6">
+            {recentInsights.map((insight) => (
+              <div key={insight.title} className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border rounded-lg">
+                <div>
+                  <h3 className="font-semibold text-lg">{insight.title}</h3>
+                  <p className="text-sm text-muted-foreground mt-1">{insight.date}</p>
+                </div>
+                <Button asChild variant="link" className="mt-2 sm:mt-0">
+                  <Link href={insight.href}>Read More</Link>
+                </Button>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-12">
+            <Button asChild variant="outline">
+                <Link href="/insights">Read All Insights</Link>
+            </Button>
+          </div>
+      </section>
+
+      {/* Case Studies */}
+      <section className="grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-80 rounded-lg overflow-hidden">
             <Image
               src={PlaceHolderImages.about}
-              alt="Team discussing strategy"
+              alt="Team in a meeting"
               fill
               className="object-cover"
-              data-ai-hint="team meeting"
+              data-ai-hint="business meeting"
             />
           </div>
+          <div>
+            <h2 className="text-3xl font-bold">Case Studies</h2>
+            <p className="mt-4 text-muted-foreground">
+              See how we’ve helped clients scale operations, attract catalytic funding, unlock compliance bottlenecks, and influence regulation across Africa.
+            </p>
+            <Button asChild className="mt-6">
+              <Link href="/case-studies">View Case Studies</Link>
+            </Button>
+          </div>
+      </section>
+      
+      {/* Trust & Impact */}
+      <section className="text-center">
+        <h2 className="text-3xl font-bold">Trust & Impact</h2>
+        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-muted-foreground">
+            <p><strong>10+ years</strong> shaping enterprises, cooperatives, and institutions</p>
+            <p><strong>50+ clients</strong> and partners across government, finance, and civil society</p>
+            <p><strong>8 African markets</strong> actively engaged</p>
+            <p><strong>$25M+ capital</strong> facilitated for enterprises and social ventures</p>
+        </div>
+        <p className="mt-12 text-muted-foreground">
+            <strong>Trusted by:</strong> Growth-stage startups, cooperative unions, fintech innovators, development partners, and public agencies.
+        </p>
+        <div className="mt-8">
+            <Button asChild variant="outline">
+                <Link href="/about#partners">Meet Our Partners</Link>
+            </Button>
         </div>
       </section>
 
-      {/* What We Do */}
-      <section className="py-16 lg:py-24 bg-secondary">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold">What We Do</h2>
-          <p className="mt-4 text-muted-foreground max-w-3xl mx-auto">We design the strategic infrastructure that turns ambition into institution. Our services are tailored for enterprises, cooperatives, nonprofits, and governments.</p>
-          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="flex flex-col items-center">
-              <LineChart className="size-12 text-primary" />
-              <h3 className="mt-4 text-xl font-semibold">Capital & Investment</h3>
-              <p className="mt-2 text-muted-foreground">Structuring investment-ready opportunities and mobilizing blended finance.</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <Users className="size-12 text-primary" />
-              <h3 className="mt-4 text-xl font-semibold">Public Affairs & Advocacy</h3>
-              <p className="mt-2 text-muted-foreground">Navigating policy, shaping influence, and strengthening institutions.</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <LandPlot className="size-12 text-primary" />
-              <h3 className="mt-4 text-xl font-semibold">Trade & Investment</h3>
-              <p className="mt-2 text-muted-foreground">Supporting cross-border structuring and market entry.</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <Lightbulb className="size-12 text-primary" />
-              <h3 className="mt-4 text-xl font-semibold">Enterprise & IP Strategy</h3>
-              <p className="mt-2 text-muted-foreground">Building legal, financial, and governance frameworks for growth.</p>
-            </div>
+      {/* Final CTA */}
+      <section className="bg-primary text-primary-foreground py-20 text-center rounded-lg">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold">Let’s Shape Africa’s Growth Frontier Together</h2>
+          <p className="mt-4 max-w-3xl mx-auto">
+            Whether you are raising capital, structuring across borders, or navigating regulatory reform — Credence Africa is your trusted execution partner.
+          </p>
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 text-lg">
+             <a href="mailto:connect@credence.africa" className="flex items-center gap-2 hover:underline">
+                <Mail /> <span>connect@credence.africa</span>
+            </a>
+            <a href="tel:+254719468240" className="flex items-center gap-2 hover:underline">
+                <Phone /> <span>+254 719 468 240</span>
+            </a>
           </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-16 lg:py-24">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold">Why Partner With Us?</h2>
-            <p className="mt-4 text-muted-foreground max-w-3xl mx-auto">We believe in execution-ready advisory that balances influence with compliance, and integrity with growth.</p>
-          </div>
-          <div className="mt-12 grid md:grid-cols-3 gap-8">
-            <div className="flex items-start gap-4">
-              <CheckCircle className="size-8 text-primary mt-1" />
-              <div>
-                <h3 className="text-xl font-semibold">Context-Driven Structuring</h3>
-                <p className="mt-1 text-muted-foreground">Strategies aligned with local law, policy, and markets.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <CheckCircle className="size-8 text-primary mt-1" />
-              <div>
-                <h3 className="text-xl font-semibold">Cross-Functional Expertise</h3>
-                <p className="mt-1 text-muted-foreground">Integrating finance, law, policy, and innovation.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <CheckCircle className="size-8 text-primary mt-1" />
-              <div>
-                <h3 className="text-xl font-semibold">Growth with Integrity</h3>
-                <p className="mt-1 text-muted-foreground">Sustainable, scalable, and strategically sound solutions.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 lg:py-24 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold">Ready to build Africa’s future?</h2>
-          <p className="mt-4 text-lg max-w-2xl mx-auto">Let’s discuss how we can help you navigate Africa&apos;s opportunity zones. A senior advisor will contact you within 24 hours.</p>
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button asChild size="lg" variant="secondary">
+          <div className="mt-10 flex justify-center gap-4">
+             <Button asChild size="lg" variant="secondary">
               <Link href="/consult">Book a Strategy Call</Link>
             </Button>
-            <div className="flex items-center gap-4">
-                <Link href="mailto:connect@credence.africa" className="flex items-center gap-2 hover:underline">
-                    <Mail /> <span>connect@credence.africa</span>
-                </Link>
-                <Link href="tel:+254719468240" className="flex items-center gap-2 hover:underline">
-                    <Phone /> <span>+254 719 468 240</span>
-                </Link>
-            </div>
+             <Button asChild size="lg" variant="outline" className="text-primary-foreground border-primary-foreground hover:bg-primary-foreground/10">
+              <Link href="/consult">Send an Inquiry</Link>
+            </Button>
           </div>
         </div>
       </section>
+
     </div>
   );
 }

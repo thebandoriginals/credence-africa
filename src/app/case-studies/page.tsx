@@ -13,14 +13,14 @@ const featuredStudies = [
 
 export default function CaseStudiesPage() {
   return (
-    <div className="py-16 lg:py-24">
+    <div className="py-16 lg:py-24 space-y-24">
       <div className="text-center">
         <h1 className="text-4xl font-bold">Case Studies</h1>
         <p className="mt-4 text-xl text-muted-foreground max-w-3xl mx-auto">Strategy That Works. Results That Scale.</p>
         <p className="mt-4 max-w-4xl mx-auto">Explore how Credence Africa has supported businesses, governments, cooperatives, and digital ventures with practical, execution-ready advisory.</p>
       </div>
 
-      <div className="mt-16">
+      <div>
         <h2 className="text-2xl font-semibold text-center mb-8">Featured Case Studies</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {featuredStudies.map(study => (
@@ -33,7 +33,7 @@ export default function CaseStudiesPage() {
         </div>
       </div>
 
-      <div className="mt-24 grid md:grid-cols-2 gap-12 items-center">
+      <div className="grid md:grid-cols-2 gap-12 items-center">
         <div className="space-y-4">
             <h2 className="text-3xl font-bold">Access Full Reports</h2>
             <p className="text-muted-foreground">Complete the form to unlock in-depth case study downloads and gain access to our full library of reports on strategy and execution in African markets.</p>

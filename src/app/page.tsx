@@ -2,6 +2,13 @@ import { Button } from "@/components/ui/button";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import Image from "next/image";
 import Link from "next/link";
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+
+const featuredInsights = [
+    { title: "Navigating East Africa’s Evolving Tax Landscape", date: "28 May 2025" },
+    { title: "Blended Finance: Unlocking Capital for Climate Resilience", date: "25 May 2025" },
+    { title: "Diaspora Investment and the Rise of Legacy Structuring", date: "25 May 2025" },
+];
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find((img) => img.id === "hero-home");
@@ -81,7 +88,33 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-12">Recent Insights</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {featuredInsights.map((insight) => (
+              <Card key={insight.title}>
+                <CardHeader>
+                  <CardTitle>{insight.title}</CardTitle>
+                  <CardDescription>{insight.date}</CardDescription>
+                </CardHeader>
+                <CardFooter>
+                    <Button asChild variant="link" className="p-0">
+                        <Link href="/insights">Read More</Link>
+                    </Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+           <div className="mt-12">
+            <Button asChild size="lg" variant="outline">
+              <Link href="/insights">Read All Insights</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-24 bg-secondary">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-12">Impact Snapshot</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">

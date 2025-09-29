@@ -79,8 +79,8 @@ export default function ServicesPage() {
 
       <div className="mt-16 grid gap-20">
         {services.map(service => (
-          <div key={service.id} id={service.id} className="grid md:grid-cols-3 gap-8 scroll-mt-24 items-center">
-            <div className="md:col-span-1 space-y-4">
+          <div key={service.id} id={service.id} className="grid md:grid-cols-2 gap-12 scroll-mt-24 items-center">
+            <div className="space-y-4">
                 <div className="flex flex-col items-center md:items-start text-center md:text-left">
                   {service.icon}
                   <h2 className="text-2xl font-semibold mt-4">{service.title}</h2>
@@ -92,7 +92,7 @@ export default function ServicesPage() {
                   </Button>
               </div>
             </div>
-            <div className="md:col-span-2">
+            <div>
               <ul className="space-y-3">
                 {service.details.map(detail => (
                   <li key={detail} className="flex items-start gap-3">

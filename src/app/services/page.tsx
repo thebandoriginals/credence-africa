@@ -70,7 +70,7 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <div className="py-16 lg:py-24">
+    <div className="py-16 lg:py-24 mx-auto lg:w-70">
       <div className="text-center">
         <h1 className="text-4xl font-bold">Our Services</h1>
         <p className="mt-4 text-xl text-muted-foreground max-w-3xl mx-auto">Strategic. Sector-Driven. Built for Execution.</p>

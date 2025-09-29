@@ -8,7 +8,7 @@ import { Mail, Phone } from "lucide-react";
 
 export default function ConsultationPage() {
   return (
-    <div className="py-16 lg:py-24">
+    <div className="py-16 lg:py-24 mx-auto lg:w-85">
       <div className="grid md:grid-cols-2 gap-16 items-center">
         <div className="space-y-6">
           <h1 className="text-4xl font-bold">Book a Consultation</h1>

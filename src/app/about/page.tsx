@@ -16,7 +16,7 @@ const partners = [
 
 export default function AboutUsPage() {
   return (
-    <div className="py-16 lg:py-24 space-y-24">
+    <div className="py-16 lg:py-24 space-y-24 mx-auto lg:w-85">
       {/* Hero Section */}
       <section className="text-center">
         <h1 className="text-4xl font-bold">Blending Precision with Perspective.</h1>

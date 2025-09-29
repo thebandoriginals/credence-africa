@@ -13,7 +13,7 @@ const featuredStudies = [
 
 export default function CaseStudiesPage() {
   return (
-    <div className="py-16 lg:py-24 space-y-24">
+    <div className="py-16 lg:py-24 space-y-24 mx-auto lg:w-85">
       <div className="text-center">
         <h1 className="text-4xl font-bold">Case Studies</h1>
         <p className="mt-4 text-xl text-muted-foreground max-w-3xl mx-auto">Strategy That Works. Results That Scale.</p>

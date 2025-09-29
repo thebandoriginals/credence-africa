@@ -18,6 +18,7 @@ export default {
     extend: {
       width: {
         '85': '85%',
+        '70': '70%',
       },
       fontFamily: {
         sans: ["var(--font-outfit)", "sans-serif"],

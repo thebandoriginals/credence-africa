@@ -60,7 +60,7 @@ const caseStudyHighlights = [
 
 export default function Home() {
   return (
-    <div className="flex flex-col space-y-24 py-16 lg:py-24">
+    <div className="flex flex-col space-y-24 py-16 lg:py-24 mx-auto lg:w-85">
       {/* Hero Section */}
       <section className="text-center">
         <h1 className="text-4xl md:text-5xl font-bold max-w-4xl mx-auto">Credence Africa — Strategic Advisory for Africa’s Next Growth Frontier</h1>

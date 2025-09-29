@@ -27,49 +27,84 @@ export default function Home() {
       description:
         "Unlock capital and structure for impact across markets and mandates.",
       icon: TrendingUp,
-      href: "/credence-consult/services",
+      href: "/credence-consult/services#capital-raising",
     },
     {
       title: "Trade & Investment Structuring",
       description:
         "Enter markets confidently with strategic positioning and compliance.",
       icon: Briefcase,
-      href: "/credence-consult/services",
+      href: "/credence-consult/services#trade-investment",
     },
     {
       title: "Corporate Structuring & Tax Strategy",
       description:
         "Structure to scale, govern to endure, and optimize for generations.",
       icon: Scale,
-      href: "/credence-consult/services",
+      href: "/credence-consult/services#corporate-structuring",
     },
     {
       title: "IP Commercialization & Talent Strategy",
       description:
         "Protect your ideas, monetize your identity, and scale your influence.",
       icon: Lightbulb,
-      href: "/credence-consult/services",
+      href: "/credence-consult/services#ip-commercialization",
     },
     {
       title: "Regulatory Affairs & Public Policy",
       description:
         "Engage power, navigate policy, and shape the future of your industry.",
       icon: Shield,
-      href: "/credence-consult/services",
+      href: "/credence-consult/services#public-affairs",
+    },
+  ];
+
+  const recentInsights = [
+    {
+      title: "Navigating East Africa's Evolving Tax Landscape",
+      date: "28 May 2025",
+      href: "/credence-consult/insights",
+    },
+    {
+      title: "IP Monetization Strategies for African Creators",
+      date: "28 May 2025",
+      href: "/credence-consult/insights",
+    },
+    {
+      title: "Blended Finance: Unlocking Capital for Climate Resilience",
+      date: "25 May 2025",
+      href: "/credence-consult/insights",
+    },
+    {
+      title: "Diaspora Investment and the Rise of Legacy Structuring",
+      date: "25 May 2025",
+      href: "/credence-consult/insights",
+    },
+    {
+      title: "The Real Cost of Compliance in 2025: What Regulators Are Watching",
+      date: "25 May 2025",
+      href: "/credence-consult/insights",
+    },
+  ];
+
+  const trustAndImpact = [
+    {
+      value: "10+",
+      label: "years shaping enterprises, cooperatives, and institutions",
+    },
+    {
+      value: "50+",
+      label: "clients and partners across government, finance, and civil society",
+    },
+    { value: "8", label: "African markets actively engaged" },
+    {
+      value: "$25M+",
+      label: "capital facilitated for enterprises and social ventures",
     },
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-background text-card-foreground">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-14 items-center">
-          <div className="mr-4 flex">
-            <Link href="/" className="mr-6 flex items-center space-x-2">
-              <Logo />
-            </Link>
-          </div>
-        </div>
-      </header>
+    <>
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
           <div className="container px-4 md:px-6">
@@ -120,9 +155,28 @@ export default function Home() {
                   and financial institutions navigate Africa’s opportunity
                   zones where risk meets scale.
                 </p>
+                <div className="flex gap-4">
+                   <Button asChild variant="link" className="p-0 h-auto">
+                    <Link href="/credence-consult/about">Our Full Story</Link>
+                  </Button>
+                   <Button asChild variant="link" className="p-0 h-auto">
+                    <Link href="/credence-consult/about#team">Meet the Team</Link>
+                  </Button>
+                </div>
               </div>
               <div className="space-y-4">
                 <div className="flex flex-col gap-4">
+                  <div className="flex items-start gap-4">
+                    <TrendingUp className="h-8 w-8 text-primary" />
+                    <div>
+                      <h3 className="text-xl font-bold text-card-foreground">
+                        Pan-African Perspective
+                      </h3>
+                      <p className="text-muted-foreground">
+                        Operating at the intersection of capital, compliance, governance, and policy across multiple jurisdictions.
+                      </p>
+                    </div>
+                  </div>
                   <div className="flex items-start gap-4">
                     <TrendingUp className="h-8 w-8 text-primary" />
                     <div>
@@ -234,21 +288,99 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </main>
-
-      <footer className="w-full bg-secondary border-t">
-        <div className="container p-6 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Credence Africa. All rights reserved.</p>
-          <div className="flex gap-4 mt-4 md:mt-0">
-            <Link href="#" className="hover:text-primary">
-              Privacy Policy
-            </Link>
-            <Link href="#" className="hover:text-primary">
-              Terms of Service
-            </Link>
+        
+        <section id="recent-insights" className="w-full py-12 md:py-24 lg:py-32">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">
+                  Recent Insights
+                </div>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-card-foreground">
+                  Clarity that Powers Strategy
+                </h2>
+                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  Expert briefings, regulatory intelligence, capital market updates, and sector-specific analysis.
+                </p>
+              </div>
+            </div>
+            <div className="mx-auto grid max-w-5xl gap-6 py-12 sm:grid-cols-2 md:grid-cols-3 lg:gap-8">
+              {recentInsights.slice(0, 3).map((insight, index) => (
+                <Card key={index} className="flex flex-col">
+                  <CardHeader>
+                    <p className="text-sm text-muted-foreground">{insight.date}</p>
+                    <CardTitle className="text-lg font-semibold">{insight.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-grow"/>
+                  <div className="p-6 pt-0">
+                    <Button variant="link" asChild className="p-0 h-auto">
+                      <Link href={insight.href}>Read more</Link>
+                    </Button>
+                  </div>
+                </Card>
+              ))}
+            </div>
+             <div className="flex justify-center">
+              <Button asChild>
+                <Link href="/credence-consult/insights">Read All Insights</Link>
+              </Button>
+            </div>
           </div>
-        </div>
-      </footer>
-    </div>
+        </section>
+
+        <section id="trust-impact" className="w-full py-12 md:py-24 lg:py-32 bg-secondary">
+          <div className="container px-4 md:px-6">
+            <div className="text-center">
+               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-card-foreground">
+                  Trust & Impact
+                </h2>
+                <p className="max-w-[900px] mx-auto text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  Trusted by growth-stage startups, cooperative unions, fintech innovators, development partners, and public agencies.
+                </p>
+            </div>
+            <div className="mx-auto grid max-w-5xl items-start gap-8 py-12 sm:grid-cols-2 md:grid-cols-4 lg:gap-12">
+              {trustAndImpact.map((item, index) => (
+                <div key={index} className="text-center">
+                  <h3 className="text-4xl font-bold text-primary">{item.value}</h3>
+                  <p className="text-muted-foreground mt-2">{item.label}</p>
+                </div>
+              ))}
+            </div>
+            <div className="flex justify-center">
+               <Button asChild variant="outline">
+                <Link href="/credence-consult/case-studies">View Case Studies</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        <section id="final-cta" className="w-full py-12 md:py-24 lg:py-32">
+            <div className="container px-4 md:px-6 text-center">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary">
+                Let’s Shape Africa’s Growth Frontier Together
+                </h2>
+                <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl mt-4">
+                Whether you are raising capital, structuring across borders, or navigating regulatory reform — Credence Africa is your trusted execution partner.
+                </p>
+                <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <Button asChild size="lg">
+                    <Link href="/credence-consult/consult">Book a Strategy Call</Link>
+                  </Button>
+                   <Button asChild variant="outline" size="lg">
+                    <Link href="mailto:connect@credence.africa">Send an Inquiry</Link>
+                  </Button>
+                </div>
+                 <div className="mt-8 text-muted-foreground">
+                  <p>
+                    <a href="mailto:connect@credence.africa" className="hover:text-primary">connect@credence.africa</a>
+                    <span className="mx-2">|</span>
+                    <a href="tel:+254719468240" className="hover:text-primary">+254 719 468 240</a>
+                  </p>
+                </div>
+            </div>
+        </section>
+
+      </main>
+    </>
   );
 }

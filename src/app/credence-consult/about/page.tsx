@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { TrendingUp } from "lucide-react";
 
 export default function AboutUsPage() {
   const teamMembers = [

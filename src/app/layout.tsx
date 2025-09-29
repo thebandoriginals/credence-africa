@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import React, { Suspense } from "react";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
@@ -28,6 +29,9 @@ export default function RootLayout({
         <div className="flex flex-col min-h-screen">
           <Header />
           <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8">
+            <Suspense>
+              <Breadcrumbs />
+            </Suspense>
             {children}
           </main>
           <Suspense>

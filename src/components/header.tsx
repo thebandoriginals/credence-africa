@@ -94,7 +94,7 @@ const sectors: { title: string; href: string; description: string }[] = [
 export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white">
-      <div className="container flex h-16 items-center">
+      <div className="container flex h-16 items-center w-85">
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <Logo />
@@ -238,6 +238,11 @@ export function Header() {
               </nav>
             </SheetContent>
           </Sheet>
+        </div>
+        <div className="flex flex-1 items-center justify-end space-x-4">
+            <Button asChild>
+                <Link href="/consult">Book a consultation</Link>
+            </Button>
         </div>
       </div>
     </header>

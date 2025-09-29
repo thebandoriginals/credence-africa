@@ -14,7 +14,7 @@ const sectors = [
     { icon: <Building />, name: "Public Sector & Governance", description: "Enhancing policy development, regulatory frameworks, and governance efficiency.", href: "/sectors/public-sector-governance" },
     { icon: <Briefcase />, name: "SMEs & Startups", description: "Providing business model innovation, funding access, and scaling strategies.", href: "/sectors/smes-startups" },
     { icon: <Laptop />, name: "Technology & Digital Economy", description: "Driving innovation in fintech, AI, blockchain, and digital transformation.", href: "/sectors/technology-digital-economy" },
-    { icon: <Handshake />, name: "Cooperatives & Social Economy", description: "Strengthening governance, leadership, and financial sustainability.", href: "/consult" },
+    { icon: <Handshake />, name: "Cooperatives & Social Economy", description: "Strengthening governance, leadership, and financial sustainability.", href: "/sectors/cooperatives-social-economy" },
     { icon: <Bus />, name: "Mobility & Logistics", description: "Advancing smart transport, sustainable mobility, and logistics solutions.", href: "/sectors/mobility-logistics" },
 ];
 

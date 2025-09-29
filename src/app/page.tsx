@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import PlaceHolderImages from "@/lib/placeholder-images.json";
-import { ArrowRight, CheckCircle, Mail, Phone } from "lucide-react";
+import { ArrowRight, CheckCircle, Mail, Phone, Scale, Users, FileText, Landmark } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -49,6 +49,13 @@ const whatWeSolve = [
     "Government relations, public policy tracking, and advocacy",
     "Monetization of IP, content, brand, and digital assets",
     "Succession, legacy, and trust planning for entrepreneurs and families",
+]
+
+const caseStudyHighlights = [
+    { icon: <Users className="size-6 text-primary" />, text: "Scaling operations for high-growth ventures." },
+    { icon: <Scale className="size-6 text-primary" />, text: "Attracting catalytic funding for social enterprises." },
+    { icon: <FileText className="size-6 text-primary" />, text: "Unlocking compliance bottlenecks for fintech innovators." },
+    { icon: <Landmark className="size-6 text-primary" />, text: "Influencing regulation for development partners." },
 ]
 
 export default function Home() {
@@ -187,26 +194,34 @@ export default function Home() {
       </section>
 
       {/* Case Studies */}
-      <section className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative h-80 rounded-lg overflow-hidden">
-            <Image
-              src={PlaceHolderImages.about}
-              alt="Team in a meeting"
-              fill
-              className="object-cover"
-              data-ai-hint="business meeting"
-            />
-          </div>
-          <div>
-            <h2 className="text-3xl font-bold">Case Studies</h2>
-            <p className="mt-4 text-muted-foreground">
-              See how we’ve helped clients scale operations, attract catalytic funding, unlock compliance bottlenecks, and influence regulation across Africa.
-            </p>
-            <Button asChild className="mt-6">
-              <Link href="/case-studies">View Case Studies</Link>
-            </Button>
-          </div>
-      </section>
+        <section className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 className="text-3xl font-bold">Case Studies</h2>
+                <p className="mt-4 text-muted-foreground">
+                    See how we’ve helped clients scale operations, attract catalytic funding, unlock compliance bottlenecks, and influence regulation across Africa.
+                </p>
+                <div className="mt-6 space-y-4">
+                    {caseStudyHighlights.map((highlight) => (
+                        <div key={highlight.text} className="flex items-start gap-4">
+                            {highlight.icon}
+                            <p className="pt-0.5">{highlight.text}</p>
+                        </div>
+                    ))}
+                </div>
+                <Button asChild className="mt-8">
+                    <Link href="/case-studies">View Case Studies</Link>
+                </Button>
+            </div>
+            <div className="relative h-96 rounded-lg overflow-hidden">
+                <Image
+                    src={PlaceHolderImages.about}
+                    alt="Team in a meeting"
+                    fill
+                    className="object-cover"
+                    data-ai-hint="business meeting"
+                />
+            </div>
+        </section>
       
       {/* Trust & Impact */}
       <section className="text-center">

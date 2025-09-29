@@ -1,41 +1,68 @@
-patch-package
+diff --git a/node_modules/react-quill/lib/index.js b/node_modules/react-quill/lib/index.js
+index 233827d..451671f 100644
 --- a/node_modules/react-quill/lib/index.js
 +++ b/node_modules/react-quill/lib/index.js
-@@ -512,7 +512,7 @@
+@@ -1,5 +1,5 @@
+ 'use strict';
+-var React = require('react');
++var React = require('react'); 
+ var ReactDOM = require('react-dom');
+ var Quill = require('quill');
+ var PropTypes = require('prop-types');
+@@ -194,7 +194,7 @@
  	},
  
  	getEditor: function getEditor() {
--		return this.editor;
-+		return this.editor
+-		return this.quill;
++		return this.quill; 
  	},
  
- 	/**
-@@ -522,7 +522,7 @@
- 	 */
  	getEditingArea: function getEditingArea() {
- 		var editor = this.getEditor();
--		var root = ReactDOM.findDOMNode(this).querySelector('.ql-editor');
-+		var root = this.editingArea;
- 		return root;
+@@ -207,11 +207,11 @@
+ 	 */
+ 
+ 	getEditorNode: function getEditorNode() {
+-		return ReactDOM.findDOMNode(this.editingArea);
++		return this.editingArea;
  	},
  
---- a/node_modules/react-quill/lib/component.js
-+++ b/node_modules/react-quill/lib/component.js
-@@ -402,7 +402,7 @@
+ 	getEditorContainerNode: function getEditorContainerNode() {
+-		return ReactDOM.findDOMNode(this);
++		return this.quill.root.parentElement;
+ 	},
+ 
+ 	/*
+diff --git a/node_modules/react-quill/lib/mixin.js b/node_modules/react-quill/lib/mixin.js
+index 279dfc7..d61f1c7 100644
+--- a/node_modules/react-quill/lib/mixin.js
++++ b/node_modules/react-quill/lib/mixin.js
+@@ -1,5 +1,5 @@
+ 'use strict';
+-var ReactDOM = require('react-dom');
++var ReactDOM = require('react-dom'); 
+ var Quill = require('quill');
+ var isEqual = require('lodash/isEqual');
+ var isObject = require('lodash/isObject');
+@@ -118,7 +118,7 @@
  	},
  
  	getEditor: function getEditor() {
--		return this.editor;
-+		return this.editor
+-		return this.quill;
++		return this.quill; 
  	},
  
- 	/**
-@@ -412,7 +412,7 @@
+ 	/*
+@@ -126,11 +126,11 @@
  	 */
- 	getEditingArea: function getEditingArea() {
- 		var editor = this.getEditor();
--		var root = ReactDOM.findDOMNode(this).querySelector('.ql-editor');
-+		var root = this.editingArea;
- 		return root;
+ 
+ 	getEditorNode: function getEditorNode() {
+-		return ReactDOM.findDOMNode(this.editingArea);
++		return this.editingArea;
  	},
  
+ 	getEditorContainerNode: function getEditorContainerNode() {
+-		return ReactDOM.findDOMNode(this);
++		return this.quill.root.parentElement;
+ 	},
+ 
+ 	/*

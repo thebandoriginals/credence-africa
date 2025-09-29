@@ -1,15 +1,38 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Check, HandCoins, Building, LineChart, ShieldHalf, UserRound, Rocket, Globe, Recycle, Briefcase } from "lucide-react";
 
 export default function SmesStartupsPage() {
+  const interventions = [
+    { icon: <HandCoins className="size-8 text-primary" />, title: "SME Capital Access Platforms", text: "Blended finance, angel networks, and diaspora investment channels." },
+    { icon: <Building className="size-8 text-primary" />, title: "Enterprise Structuring Programs", text: "Legal incorporation, governance systems, tax strategy, and compliance readiness." },
+    { icon: <LineChart className="size-8 text-primary" />, title: "Market Expansion Labs", text: "Regional growth strategies powered by AfCFTA, franchising, and export facilitation." },
+    { icon: <ShieldHalf className="size-8 text-primary" />, title: "Resilience & Recovery Programs", text: "Turnaround strategies, crisis management, and SME risk insurance." },
+    { icon: <UserRound className="size-8 text-primary" />, title: "Women & Youth Enterprise Programs", text: "Tailored leadership, financing, and mentorship for inclusive entrepreneurship." },
+    { icon: <Rocket className="size-8 text-primary" />, title: "Innovation & Digital Enterprise Hubs", text: "Startup accelerators for fintech, agri-tech, health-tech, and mobility-tech." },
+    { icon: <Globe className="size-8 text-primary" />, title: "Diaspora & Cross-Border Models", text: "Structuring diaspora investments, re-entry ventures, and regional scaling." },
+    { icon: <Recycle className="size-8 text-primary" />, title: "Enterprise-to-Cooperative Conversions", text: "Helping informal businesses grow into cooperative-backed SMEs." },
+  ];
+
+  const impactPathways = [
+    "More investment-ready SMEs and startups with access to blended capital.",
+    "Reduced startup failure rates through structuring and risk management.",
+    "Inclusive entrepreneurship growth with women and youth at the center.",
+    "SMEs scaling across borders into AfCFTA, COMESA, and global markets.",
+    "Transformative entrepreneurship ecosystems driving employment and industrialization."
+  ];
+
   return (
     <div className="py-16 lg:py-24 space-y-16 mx-auto lg:w-85">
       <header className="text-center">
+        <div className="flex justify-center mb-4">
+          <Briefcase className="size-12 text-primary" />
+        </div>
         <h1 className="text-4xl font-bold">Credence Africa — SMEs & Startups</h1>
       </header>
 
       <section>
-        <h2 className="text-3xl font-bold">Our Approach</h2>
-        <div className="mt-4 space-y-4 text-lg text-muted-foreground">
+        <h2 className="text-3xl font-bold text-center">Our Approach</h2>
+        <div className="mt-4 space-y-4 text-lg text-muted-foreground max-w-4xl mx-auto">
           <p>Entrepreneurship is Africa’s most powerful lever for economic transformation. Yet too often it is trapped in the micro-enterprise survival cycle undercapitalized, informal, and disconnected from scalable markets. To unlock real transformation, African entrepreneurship must move beyond subsistence trading into investment-ready, structured, and innovation-driven enterprises.</p>
           <p>At Credence Africa, we localize entrepreneurship models to African realities — building on cooperative capital, diaspora linkages, AfCFTA trade opportunities, and blended finance. Our work equips SMEs and startups to become regional growth engines, job creators, and global competitors.</p>
         </div>
@@ -17,26 +40,30 @@ export default function SmesStartupsPage() {
 
       <section>
         <h2 className="text-3xl font-bold text-center mb-10">Programmatic Interventions</h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card><CardContent className="p-6"><strong>SME Capital Access Platforms</strong><p className="mt-2 text-muted-foreground">Blended finance, angel networks, cooperative-backed funds, and diaspora investment channels.</p></CardContent></Card>
-            <Card><CardContent className="p-6"><strong>Enterprise Structuring Programs</strong><p className="mt-2 text-muted-foreground">Legal incorporation, governance systems, tax strategy, and compliance readiness.</p></CardContent></Card>
-            <Card><CardContent className="p-6"><strong>Market Expansion Labs</strong><p className="mt-2 text-muted-foreground">Regional growth strategies powered by AfCFTA, franchising models, and export facilitation.</p></CardContent></Card>
-            <Card><CardContent className="p-6"><strong>Resilience & Recovery Programs</strong><p className="mt-2 text-muted-foreground">Turnaround strategies, crisis management, and SME risk insurance for vulnerable sectors.</p></CardContent></Card>
-            <Card><CardContent className="p-6"><strong>Women & Youth Enterprise Programs</strong><p className="mt-2 text-muted-foreground">Tailored leadership, financing, and mentorship pathways for inclusive entrepreneurship.</p></CardContent></Card>
-            <Card><CardContent className="p-6"><strong>Innovation & Digital Enterprise Hubs</strong><p className="mt-2 text-muted-foreground">Startup accelerators for fintech, agri-tech, health-tech, and mobility-tech ventures.</p></CardContent></Card>
-            <Card><CardContent className="p-6"><strong>Diaspora & Cross-Border Entrepreneurship Models</strong><p className="mt-2 text-muted-foreground">Structuring diaspora investments, re-entry ventures, and regional scaling.</p></CardContent></Card>
-            <Card><CardContent className="p-6"><strong>Enterprise-to-Cooperative Conversions</strong><p className="mt-2 text-muted-foreground">Supporting micro-enterprises and informal businesses to grow into cooperative-backed SMEs with scale and bargaining power.</p></CardContent></Card>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {interventions.map(item => (
+                <Card key={item.title}>
+                    <CardContent className="p-6">
+                        <div className="mb-4">{item.icon}</div>
+                        <h3 className="font-bold text-lg">{item.title}</h3>
+                        <p className="mt-2 text-muted-foreground">{item.text}</p>
+                    </CardContent>
+                </Card>
+            ))}
         </div>
       </section>
 
       <section>
         <h2 className="text-3xl font-bold text-center mb-10">Impact Pathways</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card><CardContent className="p-6">More investment-ready SMEs and startups with access to blended capital.</CardContent></Card>
-            <Card><CardContent className="p-6">Reduced startup failure rates through structuring, governance, and risk management.</CardContent></Card>
-            <Card><CardContent className="p-6">Inclusive entrepreneurship growth with women and youth at the center.</CardContent></Card>
-            <Card><CardContent className="p-6">SMEs scaling across borders into AfCFTA, COMESA, and global markets.</CardContent></Card>
-            <Card><CardContent className="p-6">Transformative entrepreneurship ecosystems driving employment, industrialization, and Africa’s long-term wealth creation.</CardContent></Card>
+            {impactPathways.map((item, index) => (
+                <Card key={index}>
+                    <CardContent className="p-6 flex items-start gap-4">
+                        <Check className="size-6 text-primary mt-1 shrink-0" />
+                        <p>{item}</p>
+                    </CardContent>
+                </Card>
+            ))}
         </div>
       </section>
     </div>

@@ -8,17 +8,17 @@ export interface Insight {
     title: string;
     date: string;
     author: string;
-    image: string;
+    image: string | null;
     content: string;
 }
 
-export const staticInsights = [
+export const staticInsights: Insight[] = [
     { 
         id: "navigating-east-africas-evolving-tax-landscape",
         slug: "navigating-east-africas-evolving-tax-landscape",
         title: "Navigating East Africa’s Evolving Tax Landscape", 
         date: "28 May 2025", 
-        author: "Credence Staff",
+        author: "Credence Africa",
         image: "https://picsum.photos/seed/tax-landscape/1200/630",
         content: `
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -41,7 +41,7 @@ export const staticInsights = [
         slug: "ip-monetization-strategies-for-african-creators",
         title: "IP Monetization Strategies for African Creators", 
         date: "28 May 2025",
-        author: "Credence Staff",
+        author: "Credence Africa",
         image: "https://picsum.photos/seed/ip-monetization/1200/630",
         content: `
 <p>The digital era has opened up unprecedented opportunities for African creators to monetize their intellectual property (IP). From musicians to filmmakers, designers to writers, the potential to generate revenue from creative works is immense. This article explores various strategies for IP monetization tailored for the African context.</p>
@@ -73,7 +73,7 @@ export const staticInsights = [
         slug: "blended-finance-unlocking-capital-for-climate-resilience",
         title: "Blended Finance: Unlocking Capital for Climate Resilience", 
         date: "25 May 2025",
-        author: "Credence Staff",
+        author: "Credence Africa",
         image: "https://picsum.photos/seed/blended-finance/1200/630",
         content: `
 <p>Blended finance is emerging as a powerful tool to mobilize capital for climate resilience projects in Africa. By combining concessional public funds with commercial private investment, blended finance can de-risk projects and attract capital that would otherwise not be available.</p>
@@ -93,7 +93,7 @@ export const staticInsights = [
         slug: "diaspora-investment-and-the-rise-of-legacy-structuring",
         title: "Diaspora Investment and the Rise of Legacy Structuring", 
         date: "25 May 2025",
-        author: "Credence Staff",
+        author: "Credence Africa",
         image: "https://picsum.photos/seed/diaspora-investment/1200/630",
         content: `
 <p>The African diaspora is an increasingly powerful force for economic development on the continent. Beyond remittances, diaspora members are seeking to make long-term investments that create a lasting legacy. This has led to the rise of 'legacy structuring' – a set of financial and legal strategies designed to ensure that investments are sustainable and impactful for generations to come.</p>
@@ -111,7 +111,7 @@ export const staticInsights = [
         slug: "the-real-cost-of-compliance-in-2025",
         title: "The Real Cost of Compliance in 2025: What Regulators Are Watching", 
         date: "25 May 2025",
-        author: "Credence Staff",
+        author: "Credence Africa",
         image: "https://picsum.photos/seed/compliance-cost/1200/630",
         content: `
 <p>As African economies mature, regulatory frameworks are becoming more complex. For businesses, the cost of compliance is no longer just a line item – it's a strategic issue that can impact profitability and reputation. In 2025, regulators are focusing on several key areas.</p>
@@ -141,9 +141,21 @@ export async function getInsights(): Promise<Insight[]> {
         const insightsQuery = query(insightsCollection, orderBy('createdAt', 'desc'));
         const snapshot = await getDocs(insightsQuery);
     
+        if (snapshot.empty) {
+            return staticInsights;
+        }
+
         const insights: Insight[] = snapshot.docs.map(doc => {
             const data = doc.data();
             const slug = slugify(data.title);
+            
+            let image = `https://picsum.photos/seed/${slug}/1200/630`;
+            if (data.featuredImage) {
+                image = data.featuredImage;
+            } else if (staticInsights.find(i => i.slug === slug)) {
+                image = staticInsights.find(i => i.slug === slug)!.image;
+            }
+
             return {
                 id: doc.id,
                 slug: slug,
@@ -159,7 +171,7 @@ export async function getInsights(): Promise<Insight[]> {
                     month: 'long',
                     day: 'numeric',
                 }),
-                image: `https://picsum.photos/seed/${slug}/1200/630`,
+                image: image,
             };
         });
 

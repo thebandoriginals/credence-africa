@@ -14,12 +14,14 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import Image from 'next/image';
 
 const insightSchema = z.object({
   title: z.string().min(1, 'Title is required'),
   content: z.string().min(1, 'Content is required'),
   category: z.string().min(1, 'Category is required'),
   tags: z.string().optional(),
+  featuredImage: z.any().optional(),
 });
 
 type InsightFormValues = z.infer<typeof insightSchema>;
@@ -29,6 +31,7 @@ export default function NewInsightPage() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const form = useForm<InsightFormValues>({
     resolver: zodResolver(insightSchema),
@@ -39,6 +42,18 @@ export default function NewInsightPage() {
       tags: '',
     },
   });
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result as string);
+        form.setValue('featuredImage', reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const onSubmit = async (data: InsightFormValues) => {
     if (!user) {
@@ -57,16 +72,17 @@ export default function NewInsightPage() {
         content: data.content,
         category: data.category,
         tags: data.tags?.split(',').map(tag => tag.trim()).filter(tag => tag) || [],
-        author: user.displayName || user.email,
+        author: "Credence Africa",
         authorId: user.uid,
         createdAt: serverTimestamp(),
         published: true,
+        featuredImage: data.featuredImage || null,
       });
       toast({
         title: "Success",
         description: "Insight published successfully.",
       });
-      router.push('/admin');
+      router.push('/admin/insights');
     } catch (err: any) {
       toast({
         variant: "destructive",
@@ -142,6 +158,21 @@ export default function NewInsightPage() {
               </FormItem>
             )}
           />
+
+          <FormItem>
+            <FormLabel>Featured Image</FormLabel>
+            <FormControl>
+              <Input type="file" accept="image/*" onChange={handleImageChange} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+
+          {imagePreview && (
+            <div className="mt-4">
+              <p>Image Preview:</p>
+              <Image src={imagePreview} alt="Image preview" width={200} height={100} className="rounded-lg object-cover" />
+            </div>
+          )}
 
           <Button type="submit" disabled={loading}>
             {loading ? 'Publishing...' : 'Publish Insight'}

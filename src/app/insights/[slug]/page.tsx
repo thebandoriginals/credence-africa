@@ -45,15 +45,17 @@ export default async function InsightPage({ params }: InsightPageProps) {
           <h1 className="text-4xl font-bold mt-2">{insight.title}</h1>
         </header>
         
-        <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden mb-8">
-            <Image 
-                src={insight.image}
-                alt={insight.title}
-                fill
-                className="object-cover"
-                data-ai-hint="article header"
-            />
-        </div>
+        {insight.image && (
+          <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden mb-8">
+              <Image 
+                  src={insight.image}
+                  alt={insight.title}
+                  fill
+                  className="object-cover"
+                  data-ai-hint="article header"
+              />
+          </div>
+        )}
 
         <div
           className="prose lg:prose-xl max-w-none mx-auto"

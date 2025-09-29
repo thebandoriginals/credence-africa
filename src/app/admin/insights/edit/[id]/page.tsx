@@ -13,12 +13,14 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import Image from 'next/image';
 
 const insightSchema = z.object({
   title: z.string().min(1, 'Title is required'),
   content: z.string().min(1, 'Content is required'),
   category: z.string().min(1, 'Category is required'),
   tags: z.string().optional(),
+  featuredImage: z.any().optional(),
 });
 
 type InsightFormValues = z.infer<typeof insightSchema>;
@@ -29,6 +31,7 @@ export default function EditInsightPage() {
   const params = useParams();
   const { toast } = useToast();
   const id = params.id as string;
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const form = useForm<InsightFormValues>({
     resolver: zodResolver(insightSchema),
@@ -37,6 +40,7 @@ export default function EditInsightPage() {
       content: '',
       category: '',
       tags: '',
+      featuredImage: null,
     },
   });
 
@@ -54,6 +58,10 @@ export default function EditInsightPage() {
           category: data.category,
           tags: (data.tags || []).join(', '),
         });
+        if (data.featuredImage) {
+          setImagePreview(data.featuredImage);
+          form.setValue('featuredImage', data.featuredImage);
+        }
       } else {
         toast({
           variant: 'destructive',
@@ -66,6 +74,18 @@ export default function EditInsightPage() {
     fetchInsight();
   }, [id, form, router, toast]);
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result as string);
+        form.setValue('featuredImage', reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const onSubmit = async (data: InsightFormValues) => {
     setLoading(true);
     try {
@@ -75,6 +95,7 @@ export default function EditInsightPage() {
         content: data.content,
         category: data.category,
         tags: data.tags?.split(',').map(tag => tag.trim()).filter(tag => tag) || [],
+        featuredImage: data.featuredImage || null,
         updatedAt: serverTimestamp(),
       });
       toast({
@@ -157,6 +178,21 @@ export default function EditInsightPage() {
               </FormItem>
             )}
           />
+
+          <FormItem>
+            <FormLabel>Featured Image</FormLabel>
+            <FormControl>
+              <Input type="file" accept="image/*" onChange={handleImageChange} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+
+          {imagePreview && (
+            <div className="mt-4">
+              <p>Image Preview:</p>
+              <Image src={imagePreview} alt="Image preview" width={200} height={100} className="rounded-lg object-cover" />
+            </div>
+          )}
 
           <Button type="submit" disabled={loading}>
             {loading ? 'Updating...' : 'Update Insight'}

@@ -62,18 +62,29 @@ export default function Home() {
   return (
     <div className="flex flex-col space-y-24 py-16 lg:py-24 mx-auto lg:w-85">
       {/* Hero Section */}
-      <section className="text-center">
-        <h1 className="text-4xl md:text-5xl font-bold max-w-4xl mx-auto">Credence Africa — Strategic Advisory for Africa’s Next Growth Frontier</h1>
-        <p className="mt-6 text-xl text-muted-foreground max-w-3xl mx-auto">
-          Smart insights. Practical execution. Structures that scale in complexity and across borders.
-        </p>
-        <div className="mt-8 flex justify-center gap-4">
-          <Button asChild size="lg">
-            <Link href="/services">Explore Services</Link>
-          </Button>
-          <Button asChild size="lg" variant="outline">
-            <Link href="/consult">Book a Consultation</Link>
-          </Button>
+      <section className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="space-y-6 text-center md:text-left">
+          <h1 className="text-4xl md:text-5xl font-bold">Strategic Advisory for Africa’s Next Growth Frontier</h1>
+          <p className="text-xl text-muted-foreground">
+            Smart insights. Practical execution. Structures that scale in complexity and across borders.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <Button asChild size="lg">
+              <Link href="/services">Explore Services</Link>
+            </Button>
+            <Button asChild size="lg" variant="outline">
+              <Link href="/consult">Book a Consultation</Link>
+            </Button>
+          </div>
+        </div>
+        <div className="relative h-64 md:h-[28rem] rounded-lg overflow-hidden shadow-lg">
+            <Image 
+                src={PlaceHolderImages.hero}
+                alt="Growth Frontier"
+                fill
+                className="object-cover"
+                data-ai-hint="abstract growth"
+            />
         </div>
       </section>
       
@@ -261,7 +272,7 @@ export default function Home() {
              <Button asChild size="lg" variant="secondary">
               <Link href="/consult">Book a Strategy Call</Link>
             </Button>
-             <Button asChild size="lg" variant="outline" className="text-primary-foreground border-primary-foreground bg-transparent hover:bg-primary-foreground/10 hover:text-primary-foreground">
+             <Button asChild size="lg" variant="outline" className="text-primary-foreground border-primary-foreground hover:bg-transparent hover:text-primary-foreground bg-transparent">
               <Link href="/consult">Send an Inquiry</Link>
             </Button>
           </div>

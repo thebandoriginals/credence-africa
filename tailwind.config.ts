@@ -20,7 +20,7 @@ export default {
         '85': '85%',
       },
       fontFamily: {
-        sans: ["var(--font-questrial)", "sans-serif"],
+        sans: ["var(--font-outfit)", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

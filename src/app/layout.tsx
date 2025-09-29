@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { Questrial } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
 
-const questrial = Questrial({ subsets: ["latin"], weight: ["400"], variable: "--font-questrial" });
+const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
 export const metadata: Metadata = {
   title: "Credence Africa",
@@ -19,14 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${questrial.variable} font-sans antialiased bg-background text-foreground`}
+        className={`${outfit.variable} font-sans antialiased bg-background text-foreground`}
       >
         <div className="flex flex-col min-h-screen">
-          <Header />
           <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 w-85">
             {children}
           </main>
-          <Footer />
         </div>
       </body>
     </html>

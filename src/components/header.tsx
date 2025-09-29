@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -14,6 +15,7 @@ import { Menu } from "lucide-react";
 import { Logo } from "./logo";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import React from "react";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -26,11 +28,12 @@ const navLinks = [
 
 export function Header() {
   const pathname = usePathname();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white">
       <div className="container flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 font-bold">
+        <Link href="/logo.png" className="flex items-center gap-2 font-bold">
           <Logo className="h-10 w-auto" />
           <span className="hidden sm:inline">Credence Africa</span>
         </Link>
@@ -62,7 +65,7 @@ export function Header() {
           </Button>
         </div>
         <div className="lg:hidden">
-          <Sheet>
+          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon">
                 <Menu className="h-6 w-6" />
@@ -76,6 +79,7 @@ export function Header() {
                     key={link.href}
                     href={link.href}
                     className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                    onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {link.label}
                   </Link>

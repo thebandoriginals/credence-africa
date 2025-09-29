@@ -13,16 +13,10 @@ import { Textarea } from '@/components/ui/textarea';
 import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css';
 
-const ReactQuill = dynamic(
-  () => {
-    const Quill = import('react-quill');
-    return Quill;
-  },
-  {
-    ssr: false,
-    loading: () => <p>Loading editor...</p>,
-  }
-);
+const ReactQuill = dynamic(() => import('react-quill'), {
+  ssr: false,
+  loading: () => <p>Loading editor...</p>,
+});
 
 
 export default function NewInsightPage() {
@@ -63,8 +57,6 @@ export default function NewInsightPage() {
     }
   };
 
-  const quillRef = useRef<HTMLDivElement>(null);
-
   return (
     <div className="p-8">
       <h1 className="text-3xl font-bold mb-8">Create New Insight</h1>
@@ -81,12 +73,11 @@ export default function NewInsightPage() {
         </div>
         <div className="space-y-2">
           <Label htmlFor="content">Content</Label>
-          <div ref={quillRef}>
+          <div className="bg-white">
             <ReactQuill
               theme="snow"
               value={content}
               onChange={setContent}
-              className="bg-white"
              />
           </div>
         </div>

@@ -17,7 +17,6 @@ export function Footer({ isAdminPage }: { isAdminPage: boolean }) {
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2 font-bold text-xl">
               <Logo className="h-10 w-10"/>
-              Credence Africa
             </Link>
             <p className="text-sm text-muted-foreground">Strategic Advisory for Africa’s Next Growth Frontier.</p>
           </div>

@@ -73,8 +73,7 @@ export function Header({insights}: {insights: Insight[]}) {
     <header className="sticky top-0 z-50 w-full border-b bg-white">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-1 font-bold">
-          <Logo className="h-20 w-auto" />
-          <span>Credence Africa</span>
+          <Logo className="h-300 w-auto" />
         </Link>
         <div className="hidden lg:flex flex-grow items-center justify-center">
           <NavigationMenu>

@@ -27,7 +27,7 @@ export default function PublicSectorGovernancePage() {
         <div className="flex justify-center mb-4">
           <Landmark className="size-12 text-primary" />
         </div>
-        <h1 className="text-4xl font-bold">Credence Africa — Public Sector & Governance</h1>
+        <h1 className="text-4xl font-bold">Public Sector & Governance</h1>
       </header>
 
       <section>

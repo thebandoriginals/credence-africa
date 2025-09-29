@@ -28,7 +28,7 @@ export default function HospitalityTourismPage() {
         <div className="flex justify-center mb-4">
           <Plane className="size-12 text-primary" />
         </div>
-        <h1 className="text-4xl font-bold">Credence Africa — Hospitality & Tourism</h1>
+        <h1 className="text-4xl font-bold">Hospitality & Tourism</h1>
       </header>
 
       <section>

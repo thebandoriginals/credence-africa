@@ -29,7 +29,7 @@ export default function NonProfitSectorPage() {
         <div className="flex justify-center mb-4">
           <HandHeart className="size-12 text-primary" />
         </div>
-        <h1 className="text-4xl font-bold">Credence Africa — Non-Profit Sector</h1>
+        <h1 className="text-4xl font-bold">Non-Profit Sector</h1>
       </header>
 
       <section>

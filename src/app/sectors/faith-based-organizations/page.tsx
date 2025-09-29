@@ -32,7 +32,7 @@ export default function FaithBasedOrganizationsPage() {
         <div className="flex justify-center mb-4">
           <Church className="size-12 text-primary" />
         </div>
-        <h1 className="text-4xl font-bold">Credence Africa — Faith-Based Organizations</h1>
+        <h1 className="text-4xl font-bold">Faith-Based Organizations</h1>
       </header>
 
       <section>

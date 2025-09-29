@@ -30,7 +30,7 @@ export default function EducationSkillsDevelopmentPage() {
         <div className="flex justify-center mb-4">
           <GraduationCap className="size-12 text-primary" />
         </div>
-        <h1 className="text-4xl font-bold">Credence Africa — Education & Skills Development</h1>
+        <h1 className="text-4xl font-bold">Education & Skills Development</h1>
       </header>
 
       <section>

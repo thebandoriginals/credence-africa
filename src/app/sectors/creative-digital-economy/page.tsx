@@ -29,7 +29,7 @@ export default function CreativeDigitalEconomyPage() {
          <div className="flex justify-center mb-4">
           <Sparkles className="size-12 text-primary" />
         </div>
-        <h1 className="text-4xl font-bold">Credence Africa — Creative & Digital Economy</h1>
+        <h1 className="text-4xl font-bold">Creative & Digital Economy</h1>
       </header>
 
       <section>

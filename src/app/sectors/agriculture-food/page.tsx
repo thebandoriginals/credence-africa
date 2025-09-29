@@ -34,7 +34,7 @@ export default function AgricultureFoodPage() {
   return (
     <div className="py-16 lg:py-24 space-y-16 mx-auto lg:w-85">
       <header className="text-center">
-        <h1 className="text-4xl font-bold">Credence Africa — Agriculture & Food</h1>
+        <h1 className="text-4xl font-bold">Agriculture & Food</h1>
       </header>
 
       <section>

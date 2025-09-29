@@ -26,7 +26,7 @@ export default function TechnologyDigitalEconomyPage() {
         <div className="flex justify-center mb-4">
           <Laptop className="size-12 text-primary" />
         </div>
-        <h1 className="text-4xl font-bold">Credence Africa — Technology & Digital Economy</h1>
+        <h1 className="text-4xl font-bold">Technology & Digital Economy</h1>
       </header>
 
       <section>

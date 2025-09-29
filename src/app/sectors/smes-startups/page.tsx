@@ -27,13 +27,13 @@ export default function SmesStartupsPage() {
         <div className="flex justify-center mb-4">
           <Briefcase className="size-12 text-primary" />
         </div>
-        <h1 className="text-4xl font-bold">Credence Africa — SMEs & Startups</h1>
+        <h1 className="text-4xl font-bold">SMEs & Startups</h1>
       </header>
 
       <section>
         <h2 className="text-3xl font-bold text-center">Our Approach</h2>
         <div className="mt-4 space-y-4 text-lg text-muted-foreground max-w-4xl mx-auto">
-          <p>Entrepreneurship is Africa’s most powerful lever for economic transformation. Yet too often it is trapped in the micro-enterprise survival cycle undercapitalized, informal, and disconnected from scalable markets. To unlock real transformation, African entrepreneurship must move beyond subsistence trading into investment-ready, structured, and innovation-driven enterprises.</p>
+          <p>Entrepreneurship is Africa’s most powerful lever for aconomic transformation. Yet too often it is trapped in the micro-enterprise survival cycle undercapitalized, informal, and disconnected from scalable markets. To unlock real transformation, African entrepreneurship must move beyond subsistence trading into investment-ready, structured, and innovation-driven enterprises.</p>
           <p>At Credence Africa, we localize entrepreneurship models to African realities — building on cooperative capital, diaspora linkages, AfCFTA trade opportunities, and blended finance. Our work equips SMEs and startups to become regional growth engines, job creators, and global competitors.</p>
         </div>
       </section>

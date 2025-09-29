@@ -79,7 +79,7 @@ export default function Home() {
         </div>
         <div className="relative h-64 md:h-[28rem] rounded-lg overflow-hidden shadow-lg">
             <Image 
-                src={PlaceHolderImages.hero}
+                src="/hero.jpg"
                 alt="Growth Frontier"
                 fill
                 className="object-cover"

@@ -1,3 +1,58 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-home",
+      "description": "Cooperative farmers working together in a field.",
+      "imageUrl": "https://images.unsplash.com/photo-1544005355-5f8237dc27e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYXJtZXJzJTIwY29vcGVyYXRpdmV8ZW58MHx8fHwxNzU5MTUwMzg5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "farmers cooperative"
+    },
+    {
+      "id": "about-intro",
+      "description": "A modern office in an African city.",
+      "imageUrl": "https://images.unsplash.com/photo-1528901166007-3784c7dd3653?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxhZnJpY2FuJTIwb2ZmaWNlfGVufDB8fHx8MTc1OTE1MDM4OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "african office"
+    },
+    {
+      "id": "sectors-intro",
+      "description": "A bustling African market scene.",
+      "imageUrl": "https://images.unsplash.com/photo-1687422808311-a776f467a468?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhZnJpY2FuJTIwbWFya2V0fGVufDB8fHx8MTc1OTA2NzE0N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "african market"
+    },
+    {
+      "id": "case-studies-intro",
+      "description": "A group of professionals in a meeting.",
+      "imageUrl": "https://images.unsplash.com/photo-1709715357520-5e1047a2b691?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxidXNpbmVzcyUyMG1lZXRpbmd8ZW58MHx8fHwxNzU5MTI5MzU3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "business meeting"
+    },
+    {
+      "id": "insights-intro",
+      "description": "A person reading a document with charts.",
+      "imageUrl": "https://images.unsplash.com/photo-1579532582937-16c108930bf6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmaW5hbmNpYWwlMjByZXBvcnR8ZW58MHx8fHwxNzU5MTMyMDA5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "financial report"
+    },
+    {
+      "id": "contact-intro",
+      "description": "A person talking on a vintage telephone.",
+      "imageUrl": "https://images.unsplash.com/photo-1740560051533-3acef26ace95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y29udGFjdCUyMHVzfGVufDB8fHx8MTc1OTA4NzA1N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "contact us"
+    },
+    {
+      "id": "team-member-1",
+      "description": "Professional headshot of a team member.",
+      "imageUrl": "https://images.unsplash.com/photo-1573496358961-3c82861ab8f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxwcm9mZXNzaW9uYWwlMjBoZWFkc2hvdHxlbnwwfHx8fDE3NTkxMTIxOTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional headshot"
+    },
+    {
+      "id": "team-member-2",
+      "description": "Professional headshot of a team member.",
+      "imageUrl": "https://images.unsplash.com/photo-1629425733761-caae3b5f2e50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxwcm9mZXNzaW9uYWwlMjBoZWFkc2hvdHxlbnwwfHx8fDE3NTkxMTIxOTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional headshot"
+    },
+    {
+      "id": "team-member-3",
+      "description": "Professional headshot of a team member.",
+      "imageUrl": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxwcm9mZXNzaW9uYWwlMjBoZWFkc2hvdHxlbnwwfHx8fDE3NTkxMTIxOTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional headshot"
+    }
+  ]
 }

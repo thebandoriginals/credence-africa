@@ -12,11 +12,8 @@ import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import dynamic from 'next/dynamic';
-import 'react-quill/dist/quill.snow.css';
+import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const insightSchema = z.object({
   title: z.string().min(1, 'Title is required'),
@@ -107,13 +104,11 @@ export default function NewInsightPage() {
               <FormItem>
                 <FormLabel>Content</FormLabel>
                 <FormControl>
-                  <div className="bg-white">
-                    <ReactQuill
-                      theme="snow"
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
-                  </div>
+                  <Textarea
+                    placeholder="Write your insight content here..."
+                    className="min-h-[300px]"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>

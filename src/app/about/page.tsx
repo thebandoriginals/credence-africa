@@ -1,15 +1,8 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { CheckCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
-const team = [
-    { name: "Team Member 1", title: "Policy Strategist", imageId: "team-member-1" },
-    { name: "Team Member 2", title: "Capital Advisor", imageId: "team-member-2" },
-    { name: "Team Member 3", title: "Mobility Expert", imageId: "team-member-3" },
-]
 
 const partners = ["Startups & Scale-Ups", "SACCOs & Cooperatives", "DFIs & NGOs", "Family Offices", "Public Sector Entities", "Industry Associations"]
 
@@ -80,28 +73,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section id="our-team" className="py-16 md:py-24 bg-secondary">
-          <div className="container text-center">
-              <h2 className="text-3xl font-bold mb-12">Meet Our Team</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  {team.map((member) => {
-                      const image = PlaceHolderImages.find(img => img.id === member.imageId);
-                      return (
-                        <div key={member.name} className="flex flex-col items-center">
-                            <Avatar className="w-32 h-32 mb-4">
-                                {image && <AvatarImage src={image.imageUrl} alt={member.name} data-ai-hint={image.imageHint} />}
-                                <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
-                            </Avatar>
-                            <h3 className="font-bold text-xl">{member.name}</h3>
-                            <p className="text-muted-foreground">{member.title}</p>
-                        </div>
-                      )
-                  })}
-              </div>
-          </div>
-      </section>
-
-      <section id="our-partners" className="py-16 md:py-24">
+      <section id="our-partners" className="py-16 md:py-24  bg-secondary">
           <div className="container text-center">
               <h2 className="text-3xl font-bold mb-4">Our Partners</h2>
               <p className="max-w-3xl mx-auto text-muted-foreground mb-12">We advise clients who shape sectors, scale ventures, and steer reform:</p>

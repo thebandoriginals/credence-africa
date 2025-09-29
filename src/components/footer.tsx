@@ -16,7 +16,7 @@ export function Footer({ isAdminPage }: { isAdminPage: boolean }) {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2 font-bold text-xl">
-              <Logo className="h-10 w-10"/>
+              <Logo className="h-12 w-12"/>
             </Link>
             <p className="text-sm text-muted-foreground">Strategic Advisory for Africa’s Next Growth Frontier.</p>
           </div>

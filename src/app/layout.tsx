@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
@@ -20,9 +22,11 @@ export default function RootLayout({
         className={`${outfit.variable} font-sans antialiased bg-background text-foreground`}
       >
         <div className="flex flex-col min-h-screen">
-          <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 w-85">
+          <Header />
+          <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8">
             {children}
           </main>
+          <Footer />
         </div>
       </body>
     </html>

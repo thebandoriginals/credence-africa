@@ -1,6 +1,10 @@
+
+"use client";
+
 import { notFound } from "next/navigation";
-import { insights } from "@/lib/insights";
+import { getInsight, type Insight } from "@/lib/insights";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 interface InsightPageProps {
   params: {
@@ -8,17 +12,30 @@ interface InsightPageProps {
   };
 }
 
-export function generateStaticParams() {
-  return insights.map((insight) => ({
-    slug: insight.slug,
-  }));
-}
-
 export default function InsightPage({ params }: InsightPageProps) {
-  const insight = insights.find((insight) => insight.slug === params.slug);
+  const [insight, setInsight] = useState<Insight | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchInsight() {
+      const fetchedInsight = await getInsight(params.slug);
+      if (!fetchedInsight) {
+        notFound();
+      } else {
+        setInsight(fetchedInsight);
+      }
+      setLoading(false);
+    }
+    fetchInsight();
+  }, [params.slug]);
+
+
+  if (loading) {
+    return <div className="py-12 lg:py-16 text-center">Loading insight...</div>;
+  }
 
   if (!insight) {
-    notFound();
+    return notFound();
   }
 
   return (
@@ -47,3 +64,4 @@ export default function InsightPage({ params }: InsightPageProps) {
     </article>
   );
 }
+

@@ -1,9 +1,13 @@
+
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { BarChart, Scale, FileText, Building, Globe, Landmark } from "lucide-react";
 import Link from "next/link";
-import { insights } from "@/lib/insights";
+import { useEffect, useState } from "react";
+import { getInsights, type Insight } from "@/lib/insights";
 
 const categories = [
     { icon: <BarChart />, title: "Capital, Investment & Blended Finance", description: "Funding trends, investor mandates, and catalytic finance models." },
@@ -15,6 +19,19 @@ const categories = [
 ];
 
 export default function InsightsPage() {
+    const [insights, setInsights] = useState<Insight[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchInsights() {
+            setLoading(true);
+            const fetchedInsights = await getInsights();
+            setInsights(fetchedInsights);
+            setLoading(false);
+        }
+        fetchInsights();
+    }, []);
+
     return (
         <div className="py-16 lg:py-24 space-y-24 mx-auto lg:w-85">
             <div className="text-center">
@@ -43,17 +60,21 @@ export default function InsightsPage() {
             <section id="recent-insights">
                 <h2 className="text-3xl font-bold text-center mb-10">Recent Insights</h2>
                 <div className="mt-10 grid gap-6">
-                    {insights.map((insight) => (
-                      <div key={insight.title} className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border rounded-lg">
-                        <div>
-                          <h3 className="font-semibold text-lg">{insight.title}</h3>
-                          <p className="text-sm text-muted-foreground mt-1">{insight.date}</p>
+                    {loading ? (
+                        <p>Loading insights...</p>
+                    ) : (
+                        insights.map((insight) => (
+                        <div key={insight.id} className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border rounded-lg">
+                            <div>
+                            <h3 className="font-semibold text-lg">{insight.title}</h3>
+                            <p className="text-sm text-muted-foreground mt-1">{insight.date}</p>
+                            </div>
+                            <Button asChild variant="link" className="mt-2 sm:mt-0">
+                            <Link href={`/insights/${insight.slug}`}>Read More</Link>
+                            </Button>
                         </div>
-                        <Button asChild variant="link" className="mt-2 sm:mt-0">
-                          <Link href={`/insights/${insight.slug}`}>Read More</Link>
-                        </Button>
-                      </div>
-                    ))}
+                        ))
+                    )}
                   </div>
             </section>
 

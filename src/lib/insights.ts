@@ -1,5 +1,20 @@
-export const insights = [
+
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { db } from "./firebase";
+
+export interface Insight {
+    id: string;
+    slug: string;
+    title: string;
+    date: string;
+    author: string;
+    image: string;
+    content: string;
+}
+
+export const staticInsights = [
     { 
+        id: "navigating-east-africas-evolving-tax-landscape",
         slug: "navigating-east-africas-evolving-tax-landscape",
         title: "Navigating East Africa’s Evolving Tax Landscape", 
         date: "28 May 2025", 
@@ -22,6 +37,7 @@ export const insights = [
 ` 
     },
     { 
+        id: "ip-monetization-strategies-for-african-creators",
         slug: "ip-monetization-strategies-for-african-creators",
         title: "IP Monetization Strategies for African Creators", 
         date: "28 May 2025",
@@ -53,6 +69,7 @@ export const insights = [
 `
     },
     { 
+        id: "blended-finance-unlocking-capital-for-climate-resilience",
         slug: "blended-finance-unlocking-capital-for-climate-resilience",
         title: "Blended Finance: Unlocking Capital for Climate Resilience", 
         date: "25 May 2025",
@@ -72,6 +89,7 @@ export const insights = [
 `
     },
     { 
+        id: "diaspora-investment-and-the-rise-of-legacy-structuring",
         slug: "diaspora-investment-and-the-rise-of-legacy-structuring",
         title: "Diaspora Investment and the Rise of Legacy Structuring", 
         date: "25 May 2025",
@@ -89,6 +107,7 @@ export const insights = [
 `
     },
     { 
+        id: "the-real-cost-of-compliance-in-2025",
         slug: "the-real-cost-of-compliance-in-2025",
         title: "The Real Cost of Compliance in 2025: What Regulators Are Watching", 
         date: "25 May 2025",
@@ -107,3 +126,44 @@ export const insights = [
 `
     },
 ];
+
+function slugify(text: string) {
+    return text
+      .toLowerCase()
+      .replace(/ /g, '-')
+      .replace(/[^\w-]+/g, '');
+}
+
+export async function getInsights(): Promise<Insight[]> {
+    const insightsCollection = collection(db, 'insights');
+    const insightsQuery = query(insightsCollection, orderBy('createdAt', 'desc'));
+    const snapshot = await getDocs(insightsQuery);
+    if (snapshot.empty) {
+      return staticInsights;
+    }
+  
+    const insights: Insight[] = snapshot.docs.map(doc => {
+      const data = doc.data();
+      const slug = slugify(data.title);
+      return {
+        id: doc.id,
+        slug: slug,
+        title: data.title,
+        content: data.content,
+        author: data.author,
+        date: data.createdAt.toDate().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+        }),
+        image: `https://picsum.photos/seed/${slug}/1200/630`,
+      };
+    });
+  
+    return [...insights, ...staticInsights];
+}
+
+export async function getInsight(slug: string): Promise<Insight | undefined> {
+    const allInsights = await getInsights();
+    return allInsights.find(insight => insight.slug === slug);
+}

@@ -1,10 +1,14 @@
+
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import PlaceHolderImages from "@/lib/placeholder-images.json";
 import { ArrowRight, CheckCircle, Mail, Phone, Scale, Users, FileText, Landmark } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { insights } from "@/lib/insights";
+import { useEffect, useState } from "react";
+import { getInsights, type Insight } from "@/lib/insights";
 
 const featuredSolutions = [
     {
@@ -52,6 +56,19 @@ const caseStudyHighlights = [
 ]
 
 export default function Home() {
+  const [insights, setInsights] = useState<Insight[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+      async function fetchInsights() {
+          setLoading(true);
+          const fetchedInsights = await getInsights();
+          setInsights(fetchedInsights);
+          setLoading(false);
+      }
+      fetchInsights();
+  }, []);
+
   return (
     <div className="flex flex-col space-y-24 py-16 lg:py-24 mx-auto lg:w-85">
       {/* Hero Section */}
@@ -178,18 +195,22 @@ export default function Home() {
       <section>
         <h2 className="text-3xl font-bold text-center">Recent Insights</h2>
         <div className="mt-12 grid gap-6">
-            {insights.map((insight) => (
-              <div key={insight.title} className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border rounded-lg">
-                <div>
-                  <h3 className="font-semibold text-lg">{insight.title}</h3>
-                  <p className="text-sm text-muted-foreground mt-1">{insight.date}</p>
+            {loading ? (
+                <p>Loading insights...</p>
+            ) : (
+                insights.slice(0, 5).map((insight) => (
+                <div key={insight.id} className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border rounded-lg">
+                    <div>
+                    <h3 className="font-semibold text-lg">{insight.title}</h3>
+                    <p className="text-sm text-muted-foreground mt-1">{insight.date}</p>
+                    </div>
+                    <Button asChild variant="link" className="mt-2 sm:mt-0">
+                    <Link href={`/insights/${insight.slug}`}>Read More</Link>
+                    </Button>
                 </div>
-                <Button asChild variant="link" className="mt-2 sm:mt-0">
-                  <Link href={`/insights/${insight.slug}`}>Read More</Link>
-                </Button>
-              </div>
-            ))}
-          </div>
+                ))
+            )}
+            </div>
           <div className="text-center mt-12">
             <Button asChild variant="outline">
                 <Link href="/insights">Read All Insights</Link>

@@ -24,9 +24,6 @@ export default function PublicSectorGovernancePage() {
   return (
     <div className="py-16 lg:py-24 space-y-16 mx-auto lg:w-85">
       <header className="text-center">
-        <div className="flex justify-center mb-4">
-          <Landmark className="size-12 text-primary" />
-        </div>
         <h1 className="text-4xl font-bold">Public Sector & Governance</h1>
       </header>
 

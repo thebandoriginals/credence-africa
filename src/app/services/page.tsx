@@ -77,22 +77,26 @@ export default function ServicesPage() {
         <p className="mt-4 max-w-4xl mx-auto">At Credence Africa, we design the strategic infrastructure that turns ambition into institution. Our services are tailored for enterprises, cooperatives, nonprofits, public benefit actors, and governments navigating complexity, unlocking capital, and driving sustainable transformation.</p>
       </div>
 
-      <div className="mt-16 grid gap-12">
+      <div className="mt-16 grid gap-20">
         {services.map(service => (
-          <div key={service.id} id={service.id} className="grid md:grid-cols-3 gap-8 items-start scroll-mt-24">
-            <div className="md:col-span-1 flex flex-col items-center md:items-start text-center md:text-left">
-              {service.icon}
-              <h2 className="text-2xl font-semibold mt-4">{service.title}</h2>
-              <p className="text-muted-foreground mt-2">{service.description}</p>
-              <Button asChild className="mt-4">
-                <Link href="/consult">Book a Consultation</Link>
-              </Button>
+          <div key={service.id} id={service.id} className="grid md:grid-cols-3 gap-8 scroll-mt-24">
+            <div className="md:col-span-1 space-y-4">
+                <div className="flex flex-col items-center md:items-start text-center md:text-left">
+                  {service.icon}
+                  <h2 className="text-2xl font-semibold mt-4">{service.title}</h2>
+                </div>
+              <p className="text-muted-foreground text-center md:text-left">{service.description}</p>
+              <div className="flex justify-center md:justify-start">
+                  <Button asChild className="mt-4">
+                    <Link href="/consult">Book a Consultation</Link>
+                  </Button>
+              </div>
             </div>
             <div className="md:col-span-2">
               <ul className="space-y-3">
                 {service.details.map(detail => (
                   <li key={detail} className="flex items-start gap-3">
-                    <div className="w-2 h-2 rounded-full bg-primary mt-2.5 shrink-0"></div>
+                    <div className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0"></div>
                     <span>{detail}</span>
                   </li>
                 ))}

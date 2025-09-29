@@ -5,13 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import PlaceHolderImages from "@/lib/placeholder-images.json";
 
-const teamMembers = [
-  { name: "Team Member 1", role: "Capital Advisor", image: PlaceHolderImages.team1 },
-  { name: "Team Member 2", role: "Policy Strategist", image: PlaceHolderImages.team2 },
-  { name: "Team Member 3", role: "Business Architect", image: PlaceHolderImages.team3 },
-  { name: "Team Member 4", role: "Legal Counsel", image: PlaceHolderImages.team4 },
-];
-
 const partners = [
     "Startups & Scale-Ups",
     "SACCOs, Cooperatives & Financial Institutions",
@@ -67,29 +60,6 @@ export default function AboutUsPage() {
                 <CardHeader><CardTitle>5. Growth with Integrity</CardTitle></CardHeader>
                 <CardContent>Sustainable, scalable, and strategically sound solutions.</CardContent>
             </Card>
-        </div>
-      </section>
-
-      {/* Meet Our Team */}
-      <section id="team" className="scroll-mt-20">
-        <h2 className="text-3xl font-bold text-center mb-10">Meet Our Team</h2>
-        <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-12">Our team of lawyers, policy strategists, capital advisors, and business architects brings decades of experience across law firms, multilateral institutions, and public sector ecosystems.</p>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {teamMembers.map(member => (
-            <div key={member.name} className="text-center">
-              <div className="relative h-64 w-full rounded-lg overflow-hidden mb-4 bg-secondary">
-                  <Image 
-                    src={member.image}
-                    alt={member.name} 
-                    fill={true}
-                    style={{objectFit: "cover"}}
-                    data-ai-hint="professional portrait" 
-                  />
-              </div>
-              <h3 className="font-semibold text-lg">{member.name}</h3>
-              <p className="text-primary">{member.role}</p>
-            </div>
-          ))}
         </div>
       </section>
 

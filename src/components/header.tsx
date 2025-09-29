@@ -12,24 +12,23 @@ import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { Menu } from "lucide-react";
 import { Logo } from "./logo";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { href: "/#home", label: "Home" },
-  { href: "/#who-we-are", label: "Who We Are" },
-  { href: "/#our-approach", label: "Our Approach" },
-  { href: "/#what-we-solve", label: "What We Solve" },
-  { href: "/#featured-solutions", label: "Solutions" },
-  { href: "/#recent-insights", label: "Insights" },
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About Us" },
   { href: "/services", label: "Services" },
   { href: "/sectors", label: "Sectors" },
   { href: "/case-studies", label: "Case Studies" },
-  { href: "/about", label: "About Us" },
+  { href: "/insights", label: "Insights" },
 ];
 
 export function Header() {
+  const pathname = usePathname();
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8 w-85">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2 font-bold">
           <Logo />
           <span className="hidden sm:inline">Credence Africa</span>
@@ -39,8 +38,11 @@ export function Header() {
             <NavigationMenuList>
               {navLinks.map((link) => (
                 <NavigationMenuItem key={link.href}>
-                  <Link href={link.href} passHref>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <Link href={link.href} legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={navigationMenuTriggerStyle()}
+                      active={pathname === link.href}
+                    >
                       {link.label}
                     </NavigationMenuLink>
                   </Link>

@@ -261,7 +261,7 @@ export default function Home() {
              <Button asChild size="lg" variant="secondary">
               <Link href="/consult">Book a Strategy Call</Link>
             </Button>
-             <Button asChild size="lg" variant="outline" className="text-primary-foreground border-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground">
+             <Button asChild size="lg" variant="outline" className="text-primary-foreground border-primary-foreground bg-transparent hover:bg-primary-foreground/10 hover:text-primary-foreground">
               <Link href="/consult">Send an Inquiry</Link>
             </Button>
           </div>

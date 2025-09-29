@@ -15,7 +15,7 @@ const sectors = [
     { icon: <Briefcase />, name: "SMEs & Startups", description: "Providing business model innovation, funding access, and scaling strategies.", href: "/sectors/smes-startups" },
     { icon: <Laptop />, name: "Technology & Digital Economy", description: "Driving innovation in fintech, AI, blockchain, and digital transformation.", href: "/sectors/technology-digital-economy" },
     { icon: <Handshake />, name: "Cooperatives & Social Economy", description: "Strengthening governance, leadership, and financial sustainability.", href: "/consult" },
-    { icon: <Bus />, name: "Mobility & Logistics", description: "Advancing smart transport, sustainable mobility, and logistics solutions.", href: "/consult" },
+    { icon: <Bus />, name: "Mobility & Logistics", description: "Advancing smart transport, sustainable mobility, and logistics solutions.", href: "/sectors/mobility-logistics" },
 ];
 
 export default function SectorsPage() {

@@ -23,6 +23,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
   { href: "/services", label: "Services" },
+  { href: "/sectors", label: "Sectors", isSectors: true },
   { href: "/case-studies", label: "Case Studies" },
   { href: "/insights", label: "Insights" },
 ];
@@ -59,45 +60,48 @@ export function Header() {
             <NavigationMenuList>
               {navLinks.map((link) => (
                 <NavigationMenuItem key={link.href}>
-                  <Link href={link.href} passHref asChild>
-                    <NavigationMenuLink
-                      className={cn(
-                        navigationMenuTriggerStyle(),
-                        "hover:underline hover:decoration-primary hover:underline-offset-4 hover:decoration-2",
-                        "data-[active]:underline data-[active]:decoration-primary data-[active]:underline-offset-4 data-[active]:decoration-2 bg-white hover:bg-white"
-                      )}
-                      active={pathname === link.href}
-                    >
-                      {link.label}
-                    </NavigationMenuLink>
-                  </Link>
+                  {link.isSectors ? (
+                    <>
+                      <NavigationMenuTrigger className={cn(navigationMenuTriggerStyle(),"hover:underline hover:decoration-primary hover:underline-offset-4 hover:decoration-2","data-[active]:underline data-[active]:decoration-primary data-[active]:underline-offset-4 data-[active]:decoration-2 bg-white hover:bg-white")}>
+                        <Link href={link.href} className={cn(pathname.startsWith("/sectors") ? 'underline decoration-primary underline-offset-4 decoration-2' : '')}>Sectors</Link>
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <div className="grid w-[900px] grid-cols-3 gap-4 p-4">
+                          {sectorLinks.map((sector) => (
+                            <NavigationMenuLink key={sector.name} asChild>
+                              <Link
+                                href={sector.href}
+                                className="flex items-start gap-4 rounded-md p-3 hover:bg-accent"
+                              >
+                                <div className="text-primary mt-1">{sector.icon}</div>
+                                <div>
+                                  <div className="font-semibold">{sector.name}</div>
+                                  <p className="text-sm text-muted-foreground">
+                                    {sector.description}
+                                  </p>
+                                </div>
+                              </Link>
+                            </NavigationMenuLink>
+                          ))}
+                        </div>
+                      </NavigationMenuContent>
+                    </>
+                  ) : (
+                    <Link href={link.href} passHref asChild>
+                      <NavigationMenuLink
+                        className={cn(
+                          navigationMenuTriggerStyle(),
+                          "hover:underline hover:decoration-primary hover:underline-offset-4 hover:decoration-2",
+                          "data-[active]:underline data-[active]:decoration-primary data-[active]:underline-offset-4 data-[active]:decoration-2 bg-white hover:bg-white"
+                        )}
+                        active={pathname === link.href}
+                      >
+                        {link.label}
+                      </NavigationMenuLink>
+                    </Link>
+                  )}
                 </NavigationMenuItem>
               ))}
-               <NavigationMenuItem>
-                <NavigationMenuTrigger className={cn(navigationMenuTriggerStyle(),"hover:underline hover:decoration-primary hover:underline-offset-4 hover:decoration-2","data-[active]:underline data-[active]:decoration-primary data-[active]:underline-offset-4 data-[active]:decoration-2 bg-white hover:bg-white")}>
-                  <Link href="/sectors" className={cn(pathname.startsWith("/sectors") ? 'underline decoration-primary underline-offset-4 decoration-2' : '')}>Sectors</Link>
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="grid w-[900px] grid-cols-3 gap-4 p-4">
-                    {sectorLinks.map((sector) => (
-                      <NavigationMenuLink key={sector.name} asChild>
-                        <Link
-                          href={sector.href}
-                          className="flex items-start gap-4 rounded-md p-3 hover:bg-accent"
-                        >
-                          <div className="text-primary mt-1">{sector.icon}</div>
-                          <div>
-                            <div className="font-semibold">{sector.name}</div>
-                            <p className="text-sm text-muted-foreground">
-                              {sector.description}
-                            </p>
-                          </div>
-                        </Link>
-                      </NavigationMenuLink>
-                    ))}
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </div>
@@ -116,7 +120,7 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="right">
               <nav className="grid gap-6 text-lg font-medium mt-8">
-                {[...navLinks, {href: "/sectors", label: "Sectors"}, { href: "/consult", label: "Book a Consultation" }].map((link) => (
+                {[...navLinks.filter(l => !l.isSectors), {href: "/sectors", label: "Sectors"}, { href: "/consult", label: "Book a Consultation" }].map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}

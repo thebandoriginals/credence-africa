@@ -12,7 +12,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Button } from "./ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
 import { Bus, Church, Handshake, HeartPulse, Leaf, Briefcase, Laptop, Menu, Mic, School, Users, Building, Plane } from "lucide-react";
 import { Logo } from "./logo";
 import { usePathname } from "next/navigation";
@@ -72,8 +72,8 @@ export function Header({insights}: {insights: Insight[]}) {
     )}
     <header className="sticky top-0 z-50 w-full border-b bg-white">
       <div className="container flex h-20 items-center justify-between">
-        <Link href="/" className="flex items-center gap-1 font-bold">
-          <Logo className="h-16 w-auto" />
+        <Link href="/" className="flex items-center gap-2 font-bold text-xl">
+          <Logo className="h-16 w-16"/>
         </Link>
         <div className="hidden lg:flex flex-grow items-center justify-center">
           <NavigationMenu>
@@ -139,6 +139,9 @@ export function Header({insights}: {insights: Insight[]}) {
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
+              <SheetHeader>
+                <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+              </SheetHeader>
               <nav className="grid gap-6 text-lg font-medium mt-8">
                 {[...navLinks.filter(l => !l.isSectors), {href: "/sectors", label: "Sectors"}, { href: "/consult", label: "Book a Consultation" }].map((link) => (
                   <Link

@@ -58,10 +58,11 @@ export default async function InsightPage({ params }: InsightPageProps) {
         )}
 
         <div
-          className="prose lg:prose-xl max-w-none mx-auto"
+          className="prose lg:prose-xl max-w-none mx-auto whitespace-pre-wrap"
           dangerouslySetInnerHTML={{ __html: insight.content }}
         />
       </div>
     </article>
   );
 }
+

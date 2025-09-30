@@ -73,7 +73,7 @@ export function Header({insights}: {insights: Insight[]}) {
     <header className="sticky top-0 z-50 w-full border-b bg-white">
       <div className="container flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center gap-2 font-bold text-xl">
-          <Logo className="h-16 w-16"/>
+          <Logo className="h-20 w-20"/>
         </Link>
         <div className="hidden lg:flex flex-grow items-center justify-center">
           <NavigationMenu>
@@ -88,7 +88,7 @@ export function Header({insights}: {insights: Insight[]}) {
                       <NavigationMenuContent>
                         <div className="grid w-[900px] grid-cols-3 gap-4 p-4">
                           {sectorLinks.map((sector) => (
-                            <NavigationMenuLink key={sector.name} asChild>
+                            <NavigationMenuLink asChild key={sector.name}>
                               <Link
                                 href={sector.href}
                                 className="flex items-start gap-4 rounded-md p-3 hover:bg-accent"
@@ -107,7 +107,7 @@ export function Header({insights}: {insights: Insight[]}) {
                       </NavigationMenuContent>
                     </>
                   ) : (
-                    <Link href={link.href} passHref legacyBehavior>
+                    <Link href={link.href} passHref asChild>
                       <NavigationMenuLink
                         className={cn(
                           navigationMenuTriggerStyle(),

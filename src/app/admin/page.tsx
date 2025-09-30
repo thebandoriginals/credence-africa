@@ -9,22 +9,30 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
-import { List } from "lucide-react";
+import { List, Newspaper, MessagesSquare, FileText } from "lucide-react";
 
 export default function AdminDashboard() {
   const [user, loading] = useAuthState(auth);
   const router = useRouter();
   const [insightCount, setInsightCount] = useState(0);
+  const [consultationCount, setConsultationCount] = useState(0);
+  const [caseStudyRequestCount, setCaseStudyRequestCount] = useState(0);
 
   useEffect(() => {
     if (!loading && !user) {
       router.push('/admin/login');
     } else if (user) {
-      const fetchInsights = async () => {
-        const querySnapshot = await getDocs(collection(db, "insights"));
-        setInsightCount(querySnapshot.size);
+      const fetchData = async () => {
+        const insightsSnapshot = await getDocs(collection(db, "insights"));
+        setInsightCount(insightsSnapshot.size);
+        
+        const consultationsSnapshot = await getDocs(collection(db, "consultations"));
+        setConsultationCount(consultationsSnapshot.size);
+
+        const caseStudyRequestsSnapshot = await getDocs(collection(db, "caseStudyAccessRequests"));
+        setCaseStudyRequestCount(caseStudyRequestsSnapshot.size);
       };
-      fetchInsights();
+      fetchData();
     }
   }, [user, loading, router]);
 
@@ -47,21 +55,40 @@ export default function AdminDashboard() {
           </CardHeader>
           <CardContent>
             <p className="text-4xl font-bold">{insightCount}</p>
+             <Button asChild variant="outline" className="mt-4">
+                <Link href="/admin/insights">
+                    <Newspaper className="mr-2 h-4 w-4" />
+                    Manage Insights
+                </Link>
+            </Button>
           </CardContent>
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Manage Insights</CardTitle>
-            <CardDescription>Create, edit, and delete insights.</CardDescription>
+            <CardTitle>Consultation Requests</CardTitle>
+            <CardDescription>New requests from the consultation form.</CardDescription>
           </CardHeader>
-          <CardContent className="flex flex-col gap-4">
-            <Button asChild>
-              <Link href="/admin/insights/new">Add New Insight</Link>
+          <CardContent>
+            <p className="text-4xl font-bold">{consultationCount}</p>
+             <Button asChild variant="outline" className="mt-4">
+                <Link href="/admin/consultations">
+                    <MessagesSquare className="mr-2 h-4 w-4" />
+                    View Consultations
+                </Link>
             </Button>
-            <Button asChild variant="outline">
-                <Link href="/admin/insights">
-                    <List className="mr-2 h-4 w-4" />
-                    View All Insights
+          </CardContent>
+        </Card>
+         <Card>
+          <CardHeader>
+            <CardTitle>Case Study Requests</CardTitle>
+            <CardDescription>Requests for full case study reports.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-4xl font-bold">{caseStudyRequestCount}</p>
+             <Button asChild variant="outline" className="mt-4">
+                <Link href="/admin/case-study-requests">
+                    <FileText className="mr-2 h-4 w-4" />
+                    View Requests
                 </Link>
             </Button>
           </CardContent>

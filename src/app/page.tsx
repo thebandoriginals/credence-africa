@@ -282,8 +282,8 @@ export default function Home() {
             Whether you are raising capital, structuring across borders, or navigating regulatory reform — Credence Africa is your trusted execution partner.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 text-lg">
-             <a href="mailto:connect@credence.africa" className="flex items-center gap-2 hover:underline">
-                <Mail /> <span>connect@credence.africa</span>
+             <a href="mailto:eugene@theband.co.ke" className="flex items-center gap-2 hover:underline">
+                <Mail /> <span>eugene@theband.co.ke</span>
             </a>
             <a href="tel:+254719468240" className="flex items-center gap-2 hover:underline">
                 <Phone /> <span>+254 719 468 240</span>

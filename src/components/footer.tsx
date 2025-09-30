@@ -36,7 +36,7 @@ export function Footer({ isAdminPage }: { isAdminPage: boolean }) {
           <div>
             <h3 className="font-semibold uppercase text-foreground/80">Contact</h3>
             <ul className="mt-4 space-y-2 text-sm">
-              <li><a href="mailto:connect@credence.africa" className="text-muted-foreground hover:text-primary hover:underline">connect@credence.africa</a></li>
+              <li><a href="mailto:eugene@theband.co.ke" className="text-muted-foreground hover:text-primary hover:underline">eugene@theband.co.ke</a></li>
               <li><a href="tel:+254719468240" className="text-muted-foreground hover:text-primary hover:underline">+254 719 468 240</a></li>
               <li className="text-muted-foreground">Applewood Adams, Ngong Road, Nairobi</li>
             </ul>

@@ -15,7 +15,7 @@ export default function ConsultationPage() {
           <p className="text-xl text-muted-foreground">Let’s discuss how we can help you navigate Africa's opportunity zones.</p>
           <p>A senior advisor will contact you within 24 hours to schedule a strategy call. For direct inquiries, feel free to reach out to us.</p>
           <div className="space-y-3">
-             <p className="flex items-center gap-3"><Mail className="size-5 text-primary" /> <a href="mailto:connect@credence.africa" className="hover:underline">connect@credence.africa</a></p>
+             <p className="flex items-center gap-3"><Mail className="size-5 text-primary" /> <a href="mailto:eugene@theband.co.ke" className="hover:underline">eugene@theband.co.ke</a></p>
              <p className="flex items-center gap-3"><Phone className="size-5 text-primary" /> <a href="tel:+254719468240" className="hover:underline">+254 719 468 240</a></p>
           </div>
         </div>

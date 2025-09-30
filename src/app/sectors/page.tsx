@@ -71,7 +71,7 @@ export default function SectorsPage() {
             <section className="mt-24 text-center">
                  <h2 className="text-3xl font-bold">Let’s Shape the Future Together</h2>
                  <div className="mt-6 flex justify-center items-center gap-6">
-                    <p>📧 connect@credence.africa</p>
+                    <p>📧 eugene@theband.co.ke</p>
                     <p>☎️ +254 719 468 240</p>
                  </div>
                  <Button asChild size="lg" className="mt-8">

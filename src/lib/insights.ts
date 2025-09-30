@@ -10,6 +10,7 @@ export interface Insight {
     author: string;
     image: string | null;
     content: string;
+    category: string;
 }
 
 export const staticInsights: Insight[] = [
@@ -19,6 +20,7 @@ export const staticInsights: Insight[] = [
         title: "Navigating East Africa’s Evolving Tax Landscape", 
         date: "28 May 2025", 
         author: "Credence Africa",
+        category: "Tax",
         image: "https://picsum.photos/seed/tax-landscape/1200/630",
         content: `
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -42,6 +44,7 @@ export const staticInsights: Insight[] = [
         title: "IP Monetization Strategies for African Creators", 
         date: "28 May 2025",
         author: "Credence Africa",
+        category: "Intellectual Property",
         image: "https://picsum.photos/seed/ip-monetization/1200/630",
         content: `
 <p>The digital era has opened up unprecedented opportunities for African creators to monetize their intellectual property (IP). From musicians to filmmakers, designers to writers, the potential to generate revenue from creative works is immense. This article explores various strategies for IP monetization tailored for the African context.</p>
@@ -74,6 +77,7 @@ export const staticInsights: Insight[] = [
         title: "Blended Finance: Unlocking Capital for Climate Resilience", 
         date: "25 May 2025",
         author: "Credence Africa",
+        category: "Finance",
         image: "https://picsum.photos/seed/blended-finance/1200/630",
         content: `
 <p>Blended finance is emerging as a powerful tool to mobilize capital for climate resilience projects in Africa. By combining concessional public funds with commercial private investment, blended finance can de-risk projects and attract capital that would otherwise not be available.</p>
@@ -94,6 +98,7 @@ export const staticInsights: Insight[] = [
         title: "Diaspora Investment and the Rise of Legacy Structuring", 
         date: "25 May 2025",
         author: "Credence Africa",
+        category: "Investment",
         image: "https://picsum.photos/seed/diaspora-investment/1200/630",
         content: `
 <p>The African diaspora is an increasingly powerful force for economic development on the continent. Beyond remittances, diaspora members are seeking to make long-term investments that create a lasting legacy. This has led to the rise of 'legacy structuring' – a set of financial and legal strategies designed to ensure that investments are sustainable and impactful for generations to come.</p>
@@ -112,6 +117,7 @@ export const staticInsights: Insight[] = [
         title: "The Real Cost of Compliance in 2025: What Regulators Are Watching", 
         date: "25 May 2025",
         author: "Credence Africa",
+        category: "Compliance",
         image: "https://picsum.photos/seed/compliance-cost/1200/630",
         content: `
 <p>As African economies mature, regulatory frameworks are becoming more complex. For businesses, the cost of compliance is no longer just a line item – it's a strategic issue that can impact profitability and reputation. In 2025, regulators are focusing on several key areas.</p>
@@ -172,6 +178,7 @@ export async function getInsights(): Promise<Insight[]> {
                     day: 'numeric',
                 }),
                 image: image,
+                category: data.category,
             };
         });
 

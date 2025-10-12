@@ -107,9 +107,8 @@ export function Header({insights}: {insights: Insight[]}) {
                       </NavigationMenuContent>
                     </>
                   ) : (
-                    <Link href={link.href} passHref>
+                    <Link href={link.href} passHref legacyBehavior>
                       <NavigationMenuLink
-                        asChild
                         className={cn(
                           navigationMenuTriggerStyle(),
                           "hover:underline hover:decoration-primary hover:underline-offset-4 hover:decoration-2",
@@ -117,7 +116,7 @@ export function Header({insights}: {insights: Insight[]}) {
                         )}
                         active={pathname === link.href}
                       >
-                        <a>{link.label}</a>
+                        {link.label}
                       </NavigationMenuLink>
                     </Link>
                   )}

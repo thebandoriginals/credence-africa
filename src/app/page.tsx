@@ -4,7 +4,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import PlaceHolderImages from "@/lib/placeholder-images.json";
-import { ArrowRight, CheckCircle, Mail, Phone, Scale, Users, FileText, Landmark } from "lucide-react";
+import { ArrowRight, CheckCircle, Mail, Phone, Scale, Users, FileText, Landmark, Megaphone, GraduationCap } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -102,6 +102,28 @@ export default function Home() {
             />
         </div>
       </section>
+
+      {/* Engage and Institute Section */}
+        <section className="grid md:grid-cols-2 gap-8">
+            <Card className="bg-secondary/50">
+                <CardHeader className="flex-row items-center gap-4">
+                    <Megaphone className="size-8 text-primary" />
+                    <CardTitle>Credence Engage – Events and influence platforms</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p className="text-muted-foreground">Credence Engage builds platforms of visibility, influence, and access that translate institutional goals into strategic relationships and market leadership.</p>
+                </CardContent>
+            </Card>
+            <Card className="bg-secondary/50">
+                <CardHeader className="flex-row items-center gap-4">
+                    <GraduationCap className="size-8 text-primary" />
+                    <CardTitle>Credence Institute – Learning and leadership</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p className="text-muted-foreground">Credence Institute delivers capacity and leadership programs that move knowledge into practice, preparing Africa’s professionals and institutions for high-performance governance and economic transformation.</p>
+                </CardContent>
+            </Card>
+        </section>
       
       {/* Who We Are */}
       <section className="text-center">
